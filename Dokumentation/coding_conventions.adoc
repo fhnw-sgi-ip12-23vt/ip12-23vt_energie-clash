@@ -1,0 +1,28 @@
+= Coding Conventions
+
+== Verwendete Konventionen
+
+Folgende Konventionen werden im Projekt EnergieClassh eingehalten:
+
+* Namenskonventionen: Packagenamen sind immer klein,
+* Klassen sind CamelCase, Variablen sind drinkingCamelCase, Konstanten und Enums sind in UPPER_CASE.
+* 1 Tabulator/4 Leerschläge Einrückung pro Block.
+* Keine Mehrfachdeklarationen pro Zeile.
+* Öffnende Klammer auf der vorherigen Zeile, schliessende auf eine neue Zeile.
+* Zeilen sind max. 120 Zeichen lang
+* Verkettungen sind umgebrochen auf neue Zeilen mit 8 Leerzeichen Einrückung
+* Klassengrösse: nicht grösser als 300 Zeilen
+* ...
+
+Im Projekt EnergieClash wird eine link:https://checkstyle.sourceforge.io/[Checkstyle] Konfiguration verwendet.
+Weitere Details zu den Coding Conventions finden Sie in der
+link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/energie-clash/-/blob/main/src/main/resources/checkstyle/energieclash-java-formatter.xml?ref_type=heads[energieclash-java-formatter] Konfigurationsdatei.
+
+== Sicherstellung der Einhaltung der Konventionen
+
+Das Projekt wird mit dem link:https://maven.apache.org/[Maven] Build Automation Tool verwaltet. In der Maven "build"-Phase werden alle Java Dateien vom Maven Checkstyle plugin überprüft. Danach wird vom link:https://maven.apache.org/plugins/maven-site-plugin/["site"-Plugin] ein Report erstellt, welcher alle Verletzungen der Coding Conventions beinhaltet.
+
+Mit der link:https://docs.gitlab.com/ee/ci/pipelines/[Gitlab CI/CD Pipeline] wird bei jedem commit auf das Repository ein build durchgeführt und das Reporting erstellt.
+Das heisst, nach jedem commit liegt ein Report vor welcher jederzeit auf Gitlab Pages als HTML-Seite verfügbar ist.
+
+link:https://energie-clash-ip12-23vt-ip12-23vt-graueenergie-63da4f42f119428c.pages.fhnw.ch/checkstyle.html[Link zur generierten Gitlab Pages Seite]

@@ -1,0 +1,23 @@
+[[section-solution-strategy]]
+== Lösungsstrategie
+
+[role="arc42help"]
+****
+.Qualitätsziele
+Die folgende Tabelle zeigt, welche Entscheidungen getroffen wurden, um die Qualitätsziele zu erreichen.
+[cols="1,2" options="header"]
+|===
+|Qualitätsziel  | Erläuterung
+| Benutzerfreundlichkeit  | Es wird eine grafische Benutzerschnittstelle mit JavaFX benutzt, um die Benutzer/-innen visuell anzuziehen. Dazu werden auch Knöpfe als physische Benutzereingaben verwendet
+| Wartbarkeit  | Es wird mittels einer java.util.Properties-Konfigurationsdatei konfigurierbare Parameter festgehalten. Zusätzlich werden in einem "Admin"-Screen die Fragen angezeigt und die CRUD-Operation werden mit einer grafischen Oberfläche möglich sein.
+| Zuverlässigkeit  | Die wichtigsten Funktionen werden mittels Unittests getestet und mögliche Exceptions werden in die Console geschrieben.
+|===
+****
+
+****
+.Allgemeine Entscheidungen
+- Das Programm wird möglichst nach dem MVC-Pattern strukturiert, da es ein bewährtes und übersichtliches Pattern ist.
+- Es werden möglichst viele Best-Practices, wie DRY (Don't repeat yourself), KISS(Keep it simple stupid) oder das Single-responsiblity principle angewendet. Dies dient zur Abstraktion und zur einfachen Erweiterbarkeit.
+- Anfangs werden GUI und Spielfunktionen getrennt, damit die Funktionalitäten unabhängig von einander implementiert werden können.
+****
+

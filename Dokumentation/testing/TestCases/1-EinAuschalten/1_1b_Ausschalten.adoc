@@ -1,0 +1,17 @@
+== TC 1.1b: Ausschalten
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob das Produkt ausgeschaltet werden kann.
+
+=== Annahmen und Voraussetzungen:
+Damit das Produkt ausgeschaltet werden kann, darf keine Stromversorgung vorhanden sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Ausstecken des Steckers von der Stromversorgung.
+
+*erwartetes Ergebnis:*
+
+. Das Raspberry Pi fährt herunter.

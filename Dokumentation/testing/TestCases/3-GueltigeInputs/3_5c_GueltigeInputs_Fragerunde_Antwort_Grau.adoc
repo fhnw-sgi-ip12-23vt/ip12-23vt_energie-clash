@@ -1,0 +1,18 @@
+== TC 3.5c: Gültige Inputs Fragerunde Antwort Grau
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 3 mit dem grauen Knopf auswählen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler die Antwort zur Frage auswählen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den grauen Knopf, um die Antwort 3 auszuwählen.
+
+
+*Erwartetes Ergebnis:*
+
+. Die Antwort 3 wurde ausgewählt.

@@ -1,0 +1,19 @@
+== TC 2.4: Adminseite app properties anpassen
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Administrator die app.properties Datei anpassen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Administrator die app.properties Datei anpassen kann, muss er Zugriff auf die app.properties Datei haben.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Die app.properties Datei unter "\src\main\resources\" öffnen.
+. Die gewünschten Parameter in der app.properties Datei ändern.
+. Die Datei speichern.
+
+*Erwartetes Ergebnis:*
+
+. Die Parameter wurden geändert.

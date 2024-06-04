@@ -1,0 +1,64 @@
+In diesem Dokument werden durchgeführte Tests festgehalten
+
+[cols="1,3,5,3,3,1" options="header"]
+|===
+| ID | TestCase  | Description | Wer | Wann | Status
+| 1.1a | link:TestCases/1-EinAuschalten/1_1a_Einschalten.adoc[1_1a_Einschalten.adoc] | Bei diesem Test soll geprüft werden, ob das Produkt eingeschaltet werden kann. | tbd | tbd | tbd
+
+| 1.1b | link:TestCases/1-EinAuschalten/1_1b_Ausschalten.adoc[1_1b_Ausschalten.adoc] | Bei diesem Test soll geprüft werden, ob das Produkt ausgeschaltet werden kann. | tbd | tbd | tbd
+
+| 2.1 | link:TestCases/2-Admin/2_1_Admin_Frage_Erstellen.adoc[2_1_Admin_Frage_Erstellen] | Bei diesem Test soll geprüft werden, ob ein Administrator eine Spielfrage hinzufügen kann. | Emirhan Karaca | 07.05.2024 | Passed
+
+| 2.2 | link:TestCases/2-Admin/2_2_Admin_Frage_Löschen.adoc[2_2_Admin_Frage_Löschen] | Bei diesem Test soll geprüft werden, ob ein Administrator eine Spielfrage löschen kann. | Emirhan Karaca | 07.05.2024 | Passed
+
+| 2.3 | link:TestCases/2-Admin/2_3_Admin_Frage_Anpassen.adoc[2_3_Admin_Frage_Anpassen] | Bei diesem Test soll geprüft werden, ob ein Administrator eine Spielfrage anpassen kann. | Emirhan Karaca | 07.05.2024 | Passed
+
+| 2.4 | link:TestCases/2-Admin/2_4_Admin_appProperties_Anpassen.adoc[2_4_Admin_appProperties_Anpassen] | Bei diesem Test soll geprüft werden, ob ein Administrator die app.properties Datei anpassen kann. | Emirhan Karaca | 07.05.2024 | Passed
+
+| 3.1 | link:TestCases/3-GueltigeInputs/3_1_GueltigeInputs_SpielStarten.adoc[3_1_GueltigeInputs_SpielStarten] | Bei diesem Test soll geprüft werden, ob ein Spieler das Spiel mit einem Knopfdruck starten kann. | tbd | tbd | tbd
+
+| 3.2a | link:TestCases/3-GueltigeInputs/3_2a_GueltigeInputs_Spielmodus_Rundenmodus.adoc[3_2a_GueltigeInputs_Spielmodus_Rundenmodus] | Bei diesem Test soll geprüft werden, ob ein Spieler den Spielmodus Rundenmodus mit einem Knopfdruck starten kann. | tbd | tbd | tbd
+
+| 3.2b | link:TestCases/3-GueltigeInputs/3_2b_GueltigeInputs_Spielmodus_Schnellfeuermodus.adoc[3_2b_GueltigeInputs_Spielmodus_Schnellfeuermodus] | Bei diesem Test soll geprüft werden, ob ein Spieler den Spielmodus Schnellfeuermodus mit einem Knopfdruck starten kann. | tbd | tbd | tbd
+
+| 3.3a | link:TestCases/3-GueltigeInputs/3_3a_GueltigeInputs_Schwierigkeit_Einfach.adoc[3_3a_GueltigeInputs_Schwierigkeit_Einfach] | Bei diesem Test soll geprüft werden, ob ein Spieler die Schwierigkeit Einfach mit einem Knopfdruck starten kann. | tbd | tbd | tbd
+
+| 3.3b | link:TestCases/3-GueltigeInputs/3_3b_GueltigeInputs_Schwierigkeit_Mittel.adoc[3_3b_GueltigeInputs_Schwierigkeit_Mittel] | Bei diesem Test soll geprüft werden, ob ein Spieler die Schwierigkeit Mittel mit einem Knopfdruck starten kann. | tbd | tbd | tbd
+
+| 3.3c | link:TestCases/3-GueltigeInputs/3_3c_GueltigeInputs_Schwierigkeit_Schwierig.adoc[3_3c_GueltigeInputs_Schwierigkeit_Schwierig] | Bei diesem Test soll geprüft werden, ob ein Spieler die Schwierigkeit Schwierig mit einem Knopfdruck starten kann. | tbd | tbd | tbd
+
+| 3.4a | link:TestCases/3-GueltigeInputs/3_4a_GueltigeInputs_Erklärung_WasistGraueEnergie.adoc[3_4a_GueltigeInputs_Erklärung_WasistGraueEnergie] | Bei diesem Test soll geprüft werden, ob ein Spieler die Informationen zu Graue Energie anzeigen kann. | tbd | tbd | tbd
+
+| 3.4b | link:TestCases/3-GueltigeInputs/3_4b_GueltigeInputs_Erklärung_WieSpielspielen.adoc[3_4b_GueltigeInputs_Erklärung_WieSpielspielen] | Bei diesem Test soll geprüft werden, ob ein Spieler die Informationen, wie man das Spiel spielt, anzeigen kann. | tbd | tbd | tbd
+
+| 3.4c | link:TestCases/3-GueltigeInputs/3_4c_GueltigeInputs_Erklärung_OhneErklaerungWeiter.adoc[3_4c_GueltigeInputs_Erklärung_OhneErklaerungWeiter] | Bei diesem Test soll geprüft werden, ob ein Spieler das Spiel ohne Erklärung starten kann. | tbd | tbd | tbd
+
+| 3.5a | link:TestCases/3-GueltigeInputs/3_5a_GueltigeInputs_Fragerunde_Antwort_Gruen.adoc[3_5a_GueltigeInputs_Fragerunde_Antwort_Gruen] | Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 1 mit dem grünen Knopf auswählen kann. | tbd | tbd | tbd
+
+| 3.5b | link:TestCases/3-GueltigeInputs/3_5b_GueltigeInputs_Fragerunde_Antwort_Blau.adoc[3_5b_GueltigeInputs_Fragerunde_Antwort_Blau] | Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 2 mit dem blauen Knopf auswählen kann. | tbd | tbd | tbd
+
+| 3.5c | link:TestCases/3-GueltigeInputs/3_5c_GueltigeInputs_Fragerunde_Antwort_Grau.adoc[3_5c_GueltigeInputs_Fragerunde_Antwort_Grau] | Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 3 mit dem grauen Knopf auswählen kann. | tbd | tbd | tbd
+
+| 3.5d | link:TestCases/3-GueltigeInputs/3_5d_GueltigeInputs_Fragerunde_Antwort_Gelb.adoc[3_5d_GueltigeInputs_Fragerunde_Antwort_Gelb] | Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 4 mit dem gelben Knopf auswählen kann. | tbd | tbd | tbd
+
+| 3.5e | link:TestCases/3-GueltigeInputs/3_5e_GueltigeInputs_Fragerunde_Antwort_Rot.adoc[3_5e_GueltigeInputs_Fragerunde_Antwort_Rot] | Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 5 mit dem roten Knopf auswählen kann. | tbd | tbd | tbd
+
+| 3.6 | link:TestCases/3-GueltigeInputs/3_6_GueltigeInputs_Auswertung_ZurueckZumStart.adoc[3_6_GueltigeInputs_Auswertung_ZurueckZumStart] | Bei diesem Test soll geprüft werden, ob ein Spieler nach der Fragerunde per Knopfdruck zurück zum Startbildschirm gelangt. | tbd | tbd | tbd
+
+| 4.1 | link:TestCases/4-EffektiveLatenz/4_1_Latenz_SpielStarten.adoc[4_1_Latenz_SpielStarten] | Bei diesem Test soll geprüft werden, ob die Latenz beim Starten des Spiels XXX Sekunden beträgt. | tbd | tbd | tbd
+
+| 4.2 | link:TestCases/4-EffektiveLatenz/4_2_Latenz_Spielmodus_Rundenmodus.adoc[4_2_Latenz_Spielmodus_Rundenmodus] | Bei diesem Test soll geprüft werden, ob die Latenz beim Auswählen des Spielmodi XXX Sekunden beträgt. | tbd | tbd | tbd
+
+| 4.3 | link:TestCases/4-EffektiveLatenz/4_3_Latenz_Schwierigkeit_Einfach.adoc[4_3_Latenz_Schwierigkeit_Einfach] | Bei diesem Test soll geprüft werden, ob die Latenz beim Auswählen der Schwierigkeit XXX Sekunden beträgt. | tbd | tbd | tbd
+
+| 4.4 | link:TestCases/4-EffektiveLatenz/4_4_Latenz_Erklärung_WasistGraueEnergie.adoc[4_4_Latenz_Erklärung_WasistGraueEnergie] | Bei diesem Test soll geprüft werden, ob die Latenz beim Anzeigen der Informationen zu Grauer Energie XXX Sekunden beträgt. | tbd | tbd | tbd
+
+| 4.5 | link:TestCases/4-EffektiveLatenz/4_5_Latenz_Fragerunde_Antwort_Gruen.adoc[4_5_Latenz_Fragerunde_Antwort_Gruen] | Bei diesem Test soll geprüft werden, ob die Latenz beim Antworten XXX Sekunden beträgt. | tbd | tbd | tbd
+
+| 4.6 | link:TestCases/4-EffektiveLatenz/4_6_Latenz_Auswertung_ZurueckZumStart.adoc[4_6_Latenz_Auswertung_ZurueckZumStart] | Bei diesem Test soll geprüft werden, ob die Latenz beim Zurückkehren zum Start XXX Sekunden beträgt. | tbd | tbd | tbd
+
+| 5.1 | link:TestCases/5-Konfiguration/5_1_Konfigurierung_Sprache.adoc[5_1_Konfigurierung_Sprache] | Bei diesem Test soll geprüft werden, ob die Sprache mittels Konfigurationsdatei konfiguriert werden kann. | David Locher | 20.05.2023 | Passed
+
+| 6.1 | link:TestCases/6-Erweiterung/6_1_Erweiterung_neuer_SpielModus.adoc[6_1_Erweiterung_neuer_SpielModus] | Bei diesem Test soll geprüft werden, ob mittels den gegebenen Mitteln, ein neuer Spielmodus implementiert werden kann. Da die verfügbaren Ressourcen für diesen Test fehlen, wird ein hypothetischer Test gemacht, ob man versteht, welche Schritte man machen müsste | David Locher | 20.05.2023 | (Semi) Passed
+
+|===

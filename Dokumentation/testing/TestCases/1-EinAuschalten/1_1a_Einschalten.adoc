@@ -1,0 +1,17 @@
+== TC 1.1a: Einschalten
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob das Produkt eingeschaltet werden kann.
+
+=== Annahmen und Voraussetzungen:
+Damit das Produkt eingeschaltet werden kann muss eine Stromversorgung vorhanden sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Einstecken des Steckers in die Stromversorgung.
+
+*erwartetes Ergebnis:*
+
+. Das Raspberry Pi bootet und das Spiel startet automatisch.

@@ -1,0 +1,21 @@
+== TC 2.2: Adminseite Frage löschen
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Administrator eine Spielfrage löschen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Administrator die Spielfrage löschen kann, muss das Spiel eingeschaltet sein und eine Tastatur oder eine Maus eingesteckt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Im Startbildschirm mit der Maus auf das Logo in der Mitte klicken.
+. Im Admin-Menü die Frage, die man löschen will, auswählen
+. Unten links auf "Edit" klicken.
+. Auf der Bearbeitungsseite unten auf "Delete" klicken.
+. Den erscheinenden Dialog, ob man sicher ist, bestätigen.
+
+*Erwartetes Ergebnis:*
+
+. Die Spielfrage wurde gelöscht.

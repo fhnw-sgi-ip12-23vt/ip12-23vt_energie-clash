@@ -1,0 +1,31 @@
+[[section-glossary]]
+== Glossar
+
+[role="arc42help"]
+In dieser Tabelle werden genannte technische oder fachliche Begriffe im Zusammenhang mit dem System erklärt.
+
+[cols="1,2" options="header"]
+|===
+// Worte alphabetisch ordnen
+|Wort  | Erklärung
+| JavaDoc  | Tool zur Dokumentation von Code. Spezielle Kommentare im Code um Glossare mit Begriffen oder Funktionen zu erstellen.
+| SAD  | Software-Architecture-Documentation. Dieses Dokument.
+| Pi4J Library | Eine Java-Bibliothek, die speziell für die Interaktion mit den GPIO (General Purpose Input/Output) Pins des Raspberry Pi entwickelt wurde. Sie erleichtert die Steuerung von Sensoren, Aktoren und anderen elektronischen Komponenten, die über die GPIO-Pins des Raspberry Pi angeschlossen sind.
+| JavaFX | Eine Java-Bibliothek zur Erstellung von plattformübergreifenden grafischen Benutzeroberflächen (GUIs). In der Lösungsstrategie von Energie-Clash wird JavaFX verwendet, um eine ansprechende und benutzerfreundliche Benutzeroberfläche für das Spiel zu erstellen.
+| MVC-Pattern | Das Model-View-Controller (MVC)-Muster ist ein Architekturmuster, das die Strukturierung von Anwendungen in drei Hauptkomponenten unterstützt: das Model, die View und den Controller. Es wird in der grundlegenden Architektur von Energie-Clash verwendet, um eine klare Trennung zwischen Datenmodell, Benutzeroberfläche und Anwendungslogik zu erreichen.
+| Observer-Pattern |  Ein Entwurfsmuster, das verwendet wird, um eine abhängige Beziehung zwischen Objekten zu definieren, sodass Änderungen an einem Objekt automatisch an andere Objekte weitergegeben werden können.
+| DRY (Don't repeat yourself) | Ein Prinzip der Softwareentwicklung, das besagt, dass jede Information oder jedes Konzept in einem System nur an einer einzigen Stelle definiert sein sollte. Das Ziel ist es, Redundanz zu vermeiden und die Wartbarkeit des Codes zu verbessern.
+| KISS (Keep it simple, stupid) | Ein Designprinzip, das besagt, dass Systeme so einfach wie möglich gehalten werden sollten, um sie leichter zu verstehen, zu warten und zu erweitern.
+| Single-responsibility principle | Ein Prinzip der Objektorientierten Programmierung, das besagt, dass eine Klasse nur eine einzige Verantwortung haben sollte. Durch die Aufteilung von Klassen
+| MUSS / DARF NICHT  | Eine absolute Anforderung, über die nicht verhandelt werden kann.Ein System, das diese Anforderung nicht erfüllt, wird disqualifiziert
+| SOLL / SOLL NICHT  | Eine empfohlene Anforderung, über die verhandelt werden kann. Je mehr empfohlene Anforderungen umgesetzt werden, desto besser. Es muss eine Abhilfe geben, die das Fehlen der Anforderung kompensieren kann
+| DARF / MUSS NICHT  | Eine optionale Anforderung. Ein System kann die Anforderung implementieren, wenn der Anbieter dies beschließt. Die Beteiligten nutzen die Anforderung, wenn das System sie erfüllt.
+| Energie-Sparende | Eine von zwei Rollen die im Spiel vorkommt. Der Sparende soll sich während dem Spiel sparmsam verhalten.
+| Energie-Verschwendende  | Eine von zwei Rollen die im Spiel vorkommt. Der Verschwendende soll sich während dem Spiel verschwenderisch verhalten.
+| MOS (Mean opinion score) | Der Mean Opinion Score (MOS) ist eine Kennzahl zur Bewertung der Qualität von Sprach- und Videoübertragungen, basierend auf Nutzerbewertungen auf einer Skala von 1 (sehr schlecht) bis 5 (sehr gut). Er wird häufig in der Telekommunikationsbranche verwendet, um die Zufriedenheit der Nutzer mit Kommunikationsdiensten zu messen.
+|===
+
+
+
+
+

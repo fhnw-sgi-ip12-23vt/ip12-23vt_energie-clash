@@ -1,0 +1,24 @@
+== TC 5.1: Konfigurierung Spiel
+
+=== Beschreibung
+Ein Administrator des Spiels soll in der Lage sein, das Spiel mittels der Konfigurationsdatei in 5 Minuten zu konfigurieren.
+
+=== Annahmen und Voraussetzungen:
+* Das Raspberry Pi wurde korrekt installiert.
+* Die "Run on Pi (X11)" Konfiguration wurde gestartet und somit das Spiel auf das Raspberry Pi kopiert.
+* Die Konfigurationsdatei wurde noch nicht verändert.
+
+=== Testdaten:
+-
+
+=== Auszuführende Schritte:
+
+. SAD und README lesen.
+. Konfigurationsdatei öffnen.
+. Kommentare lesen.
+. Die Sprache von Deutsch zu Englisch wechseln
+. Spiel starten
+
+=== erwartetes Ergebnis:
+
+. Das Spiel ist auf Englisch

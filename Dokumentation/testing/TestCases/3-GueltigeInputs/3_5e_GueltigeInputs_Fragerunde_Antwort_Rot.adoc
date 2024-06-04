@@ -1,0 +1,18 @@
+== TC 3.5e: Gültige Inputs Fragerunde Antwort Rot
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 5 mit dem roten Knopf auswählen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler die Antwort zur Frage auswählen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den roten Knopf, um die Antwort 5 auszuwählen.
+
+
+*Erwartetes Ergebnis:*
+
+. Die Antwort 5 wurde ausgewählt.

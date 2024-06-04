@@ -1,0 +1,15 @@
+[[section-design-decisions]]
+== Architekturentscheidungen
+
+[role="arc42help"]
+****
+In diesem Abschnitt werden die wichtigsten Architekturentscheidungen beschrieben.
+
+[cols="1,2" options="header"]
+|===
+|Entscheidung  |Erläuterung
+|Grundlegene Architektur  |Wie im link:04_solution_strategy.adoc[vierten Kapitel] beschrieben, wird für die grundlegene Architektur das MVC-Pattern benutzt. Der Grund ist, dass unser Team mit dieser Architektur am meisten Erfahrung hat. Ausserdem ist MVC weit verbreitet und hat sich bei vielen anderen Programmen bewährt.
+|Interface Controller - View  |Die Kommunikation zwischen View und Controller erfolgt über ein Observer-Pattern. Der Controller wird als Observer registriert und die View-Klassen werden dem hinzugefügt.
+|Erstellung des Spiels mit Factory-Pattern |Beim Start des Programms wird eine abstrakte GameFactory verwendet um das eigentliche Spiel zu erstellen. Anhand der Auswahl des/r Spielers/Spielerin wird das entsprechende Object erstellt. Dies vereinfacht es, ein neues Spiel bzw. einen neuen Spielmodus zu implementieren.
+|===
+****

@@ -1,0 +1,18 @@
+== TC 3.5a: Gültige Inputs Fragerunde Antwort Grün
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 1 mit dem grünen Knopf auswählen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler die Antwort zur Frage auswählen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den grünen Knopf, um die Antwort 1 auszuwählen.
+
+
+*Erwartetes Ergebnis:*
+
+. Die Antwort 1 wurde ausgewählt.

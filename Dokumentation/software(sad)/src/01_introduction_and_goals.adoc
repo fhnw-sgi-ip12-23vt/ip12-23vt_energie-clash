@@ -1,0 +1,54 @@
+[[section-introduction-and-goals]]
+==	Einführung und Ziele
+
+[role="arc42help"]
+****
+Dieser Abschnitt führt in die Aufgabenstellung und Ziele ein.
+****
+
+=== Aufgabenstellung
+
+[role="arc42help"]
+****
+.Was ist Energie-Clash
+
+* Energie-Clash ist ein Spiel, welches ein Bewusstsein für graue Energie schaffen soll.
+* Es ist ein 1 gegen 1 Spiel, bei welchem die Spieler/-innen zwei vordefinierte Rollen einnehmen: Den Energie-Verschwender und den Energie-Sparer
+* Das Spiel ist rundenbasiert. Pro Runde wird beiden Spielern die gleiche Frage gestellt.
+* Gewonnen hat der/die Spieler/-in, welche/r gemäss seiner Rolle am meisten Energie gespart oder verschwendet hat.
+
+.Wesentliche Features
+* Die Spieler-/innen erhalten während des Spiels wichtige Informationen zum Thema Graue-Energie und möglichen Sparmassnahmen.
+* Es besteht die Möglichkeit, das Spiel zu starten, den Schwierigkeitsgrad zu wählen.
+* Das Spiel kann von Drittpersonen konfiguriert werden. Es existieren USB Anschlüsse an der Aussenseite des Gehäuses, welche Zugriff auf das System ermöglichen.
+****
+
+=== Qualitätsziele
+
+[role="arc42help"]
+****
+Die folgende Tabelle beschreibt die zentralen Qualitätsziele von Energie-Clash, wobei die Reihenfolge eine grobe Orientierung bezüglich der Wichtigkeit vorgibt.
+[cols="1,2" options="header"]
+|===
+|Qualitätsziel  |Erläuterung
+| Benutzerfreundlichkeit  | Das Spiel soll die Vermittlung grauer Energie so einfach und spielerisch gestalten. Es soll attraktiv sein und nur die nötigsten Benutzereingaben brauchen.
+| Wartbarkeit  | Da dieses Spiel auch an Dritte weitergegeben werden soll, muss ohne grossen Aufwand das Spiel konfiguriert und gewartet werden können.
+| Zuverlässigkeit  | Das Spiel soll frei von möglichen Fehlerquellen und Bugs sein und seinen Zweck Wissen zu vermitteln zuverlässig erledigen können.
+| Low Latency | Das Spiel soll eine tiefe Antwortszeit haben, damit das Interesse des/der Spieler/-in vorhanden bleibt.
+|===
+****
+
+=== Stakeholder
+
+[role="arc42help"]
+****
+Die folgende Tabelle beschreibt die Stakeholder der Softwarearchitektur von Energie-Clash.
+[cols="1,2" options="header"]
+|===
+|Rolle |Bezug
+| Softwarearchitekt/-in  | Der/Die Softwarearchitekt/-in muss die Softwarearchitekur definieren und bestens darüber Bescheid wissen.
+| Entwickler/-innen  | Die Entwickler/-innen müssen gemäss der Softwarearchitekur und dessen Dokumentation das Spiel implementieren.
+|===
+****
+
+

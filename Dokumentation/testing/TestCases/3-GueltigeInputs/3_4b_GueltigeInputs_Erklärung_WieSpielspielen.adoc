@@ -1,0 +1,17 @@
+== TC 3.4b: Gültige Inputs Wie spielt man das Spiel
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler die Informationen, wie man das Spiel spielt, anzeigen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler die Informationen zum Spiel anzeigen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den grauen Knopf in der Mitte, um die Erklärung zum Spiel anzuzeigen.
+
+*Erwartetes Ergebnis:*
+
+. Die Erklärung zum Spiel wird angezeigt.

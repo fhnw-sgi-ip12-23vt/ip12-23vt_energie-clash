@@ -1,0 +1,20 @@
+[[section-architecture-constraints]]
+== Randbedingungen
+
+[role="arc42help"]
+****
+Die folgende Tabelle beschreibt die Randbedingungen der Softwarearchitektur von Energie-Clash
+[cols="1,2" options="header"]
+|===
+|Randbedingung  |Erläuterung
+| Implementierung in Java 17  | Das Spiel soll in Java 17 implementiert werden
+| Raspberry Pi  | Das Spiel wird mittels eines Raspberry Pis realisiert
+| Pi4J Library  | Da Java 17 und ein Raspberry Pi benutzt werden müssen, wird die Pi4J Library gebraucht.
+| SQLite | Falls eine Datenbank gebraucht werden sollte, muss SQLite verwendet werden, da SQLite eine server-less Architektur verwendet. Das heisst, dass das Datenbankverwaltungssystem Teil der Applikation ist.
+| Konfigurationsdatei mit java.util.Properties | Das Spiel wird verschiedene konfigurierbare Parameter enthalten. Dies wird mittels einer java.util.Properties-Konfigurationsdatei gelöst. Das Spiel soll innert 5 Minuten konfiguriert werden können.
+| Mehrsprachig | Das Spiel soll mehrsprachig sein. Das bedeutet, dass Texte und Strings ausgelagert und nicht hart im Code vorhanden sind.
+| Ohne Internet | Wenn möglich soll das Spiel ohne Internet funktionieren. WLAN wäre jedoch möglich.
+| Low Latency | Das Spiel soll eine tiefe Antwortszeit haben, damit das Interesse des/der Spieler/-in vorhanden bleibt.
+| Keine zusätzlichen Webserver | Das Spiel soll keine zusätzlichen Webserver verwenden.
+|===
+****

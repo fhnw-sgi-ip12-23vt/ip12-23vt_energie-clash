@@ -1,0 +1,24 @@
+== TC 6.1: Erweiteung neuer Spielmodus
+
+=== Beschreibung
+Ein erfahrener Java-Entwickler soll in der Lage sein anhand der SAD, dem README und den vorhandenen JavaDoc-Kommentaren einen neuen Spielmodus zu implementieren.
+
+=== Annahmen und Voraussetzungen:
+* Der Entwickler hat das Repository gecloned.
+
+=== Testdaten:
+-
+
+=== Auszuführende Schritte:
+
+. SAD lesen.
+. In Code einlesen.
+. Spielmodus implementieren und allfälliges Refactoring machen.
+. Spielmodus in der Konfigurationsdatei spezifizieren.
+. Spiel starten
+
+=== erwartetes Ergebnis:
+
+* Das Spiel wird ohne Fehlermeldungen und Crashes gestartet.
+* Der neue Spielmodus kann ausgewählt werden.
+* Der neue Spielmodus kann fehlerfrei gespielt werden.

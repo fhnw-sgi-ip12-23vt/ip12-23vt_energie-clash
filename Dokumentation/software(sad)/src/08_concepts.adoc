@@ -1,0 +1,72 @@
+[[section-concepts]]
+== Querschnittliche Konzepte
+
+=== Benutzungsoberfläche
+
+Als UI wird JavaFX mit FXML verwendet. Das ermöglicht die Bedienungen mit Maus&Tastatur.
+
+Da das Spiel jedoch mit phsyischen Knöpfen gespielt wird, werden Spielaktivitäten auf die Knöpfe gemappt.
+[source,java]
+----
+import ch.graueenergie.energieclash.util.Button;
+...
+button.onDown(() -> Platform.runLater(this::doSomething))
+----
+
+Funktionen, die z. B. für Administratoren gedacht sind, sind für Maus&Tastatur ausgelegt.
+[source,java]
+----
+import javafx.scene.control.Button;
+...
+button.setOnAction(actionEvent -> doSomething());
+----
+=== Logging & Exception-Handling
+
+Ein gutes Logging ist wichtig für die Fehlerbehandlung und Debugging.
+Deshalb sollen, wo es sinnvoll ist, Logging-Einträge gemacht werden.
+Z.B. bei einem Knopfdruck soll ein Logging-Eintrag gemacht werden.
+
+[source,java]
+----
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+...
+Logger LOGGER = LogManager.getLogger(Clazz.class);
+...
+LOGGER.info("Log this");
+----
+Wenn Exception geworfen werden, ist es manchmal sinnvoller die Exception zu fangen und zu verarbeiten.
+Man soll selber abwägen, ob Exceptions gefangen werden sollen oder nicht.
+Dies soll jedoch mit den Product-Owners abgesprochen werden.
+
+[source,java]
+----
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+...
+Logger LOGGER = LogManager.getLogger(Clazz.class);
+...
+try {
+...
+}
+catch (Exception e){
+	LOGGER.error(e);
+}
+----
+
+=== CRUD-Operationen Datenbank
+
+CRUD-Operationen an der Datenbank sollen ausschiesslich über das Model laufen.
+Dies verhindert Inkonsistenzen des Verhaltens bei den Operationen und vereinfacht Debugging.
+Zusätzlich wird die Wartung einfacher.
+
+[source,java]
+----
+import ch.graueenergie.energieclash.model.EnergieClashModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+...
+EnergieClashModel model = new EnergieClashModel(LogManager.getLogger(EnergieClashModel.class));
+...
+model.someCrudOperation();
+----

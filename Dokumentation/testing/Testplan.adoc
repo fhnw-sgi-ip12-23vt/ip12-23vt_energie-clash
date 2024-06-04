@@ -1,0 +1,21 @@
+= Testplan
+
+// https://de.parasoft.com/blog/how-to-write-test-cases-for-software-examples-tutorial/
+// Beschreiben Sie hier, wann Sie was testen wollen.
+== Automatische Tests
+Unsere automatischen Tests werden mit JUnit5 gemacht.
+
+.Was wird getestet?
+
+* CRUD-Operationen der Datenbank
+* Laden des Konfigurations-file
+* Start des Spiels mit Konfigurationen
+
+== Manuelle Tests
+
+.Was wird getestet
+
+* AdminPage
+* Effektive Latenz
+* Gültigkeit von Inputs
+* Für gültige Inputs die richtigen Outputs

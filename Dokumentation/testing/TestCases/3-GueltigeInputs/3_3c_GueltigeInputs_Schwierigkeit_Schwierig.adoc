@@ -1,0 +1,17 @@
+== TC 3.3c: Gültige Inputs Schwierigkeit Schwierig
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler die Schwierigkeit Schwierig mit einem Knopfdruck starten kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler den Spielmodus auswählen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein und der Spielmodus ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den roten Knopf rechts, um die Schwierigkeit Schwierig auszuwählen.
+
+
+*Erwartetes Ergebnis:*
+
+. Die Schwierigkeit Schwierig wurde ausgewählt.

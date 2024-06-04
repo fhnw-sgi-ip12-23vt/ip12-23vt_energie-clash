@@ -1,0 +1,24 @@
+== TC 2.1: Adminseite Frage erstellen
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Administrator eine Spielfrage hinzufügen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Administrator die Spielfrage erstellen kann, muss das Spiel eingeschaltet sein und eine Tastatur oder eine Maus eingesteckt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Im Startbildschirm mit der Maus auf das Logo in der Mitte klicken.
+. Im Admin-Dashboard unten rechts auf "Add" klicken.
+. Die Spielfrage im obersten Textfeld definieren.
+. Die Sprache auswählen.
+. Die Schwierigkeit auswählen.
+. Die Antworten 1-5 definieren.
+. Die Erklärung zur Frage definieren.
+. Auf "Save" klicken.
+
+*Erwartetes Ergebnis:*
+
+. Eine neue Spielfrage wurde erstellt.

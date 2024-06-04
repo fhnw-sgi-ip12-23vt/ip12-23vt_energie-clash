@@ -1,0 +1,21 @@
+== TC 2.3: Adminseite Frage anpassen
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Administrator eine Spielfrage anpassen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Administrator die Spielfrage anpassen kann, muss das Spiel eingeschaltet sein und eine Tastatur oder eine Maus eingesteckt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Im Startbildschirm mit der Maus auf das Logo in der Mitte klicken.
+. Im Admin-Menü die Frage, die man anpassen möchte, auswählen.
+. Unten links auf "Edit" klicken.
+. In der Bearbeitungsseite die Frage mit Sprache und Schwierigkeit, die Antworten oder die Erklärung anpassen.
+. Auf "Save" klicken.
+
+*Erwartetes Ergebnis:*
+
+. Die ausgewählte Spielfrage wurde angepasst.

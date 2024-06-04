@@ -1,0 +1,17 @@
+== TC 3.4c: Gültige Inputs Ohne Erklärung weiter
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler das Spiel ohne Erklärung starten kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler das Spiel ohne Erklärung starten kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den roten Knopf rechts, um das Spiel ohne Erklärung zu starten.
+
+*Erwartetes Ergebnis:*
+
+. Das Spiel wird ohne Erklärung gestartet.

@@ -1,0 +1,18 @@
+== TC 3.5d: Gültige Inputs Fragerunde Antwort Gelb
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler die Antwort 4 mit dem gelben Knopf auswählen kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler die Antwort zur Frage auswählen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den gelben Knopf, um die Antwort 4 auszuwählen.
+
+
+*Erwartetes Ergebnis:*
+
+. Die Antwort 4 wurde ausgewählt.

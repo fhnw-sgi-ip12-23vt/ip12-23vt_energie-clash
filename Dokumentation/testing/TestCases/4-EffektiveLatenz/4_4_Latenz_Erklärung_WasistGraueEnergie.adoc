@@ -1,0 +1,17 @@
+== TC 4.4: Latenz Was ist Graue Energie
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob die Latenz beim Anzeigen der Informationen zu Grauer Energie XXX Sekunden beträgt.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler die Informationen zu Graue Energie anzeigen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den grünen Knopf links, um die Erklärung zu Grauer Energie anzuzeigen.
+
+*Erwartetes Ergebnis:*
+
+. Die Informationen zu Grauer Energie wird nach XXX Sekunden angezeigt.

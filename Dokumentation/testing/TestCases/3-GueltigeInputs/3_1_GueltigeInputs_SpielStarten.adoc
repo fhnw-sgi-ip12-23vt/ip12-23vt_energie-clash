@@ -1,0 +1,18 @@
+== TC 3.1: Gültige Inputs Spiel starten
+
+=== Beschreibung
+Bei diesem Test soll geprüft werden, ob ein Spieler das Spiel mit einem Knopfdruck starten kann.
+
+=== Annahmen und Voraussetzungen:
+Damit der Spieler das Spiel starten kann, muss das Spiel eingeschaltet sein und der Startbildschirm ersichtlich sein.
+
+=== Testdaten:
+
+*Auszuführende Schritte:*
+
+. Drücke auf den grauen Knopf in der Mitte, um das Spiel zu starten.
+
+
+*Erwartetes Ergebnis:*
+
+. Das Spiel wurde gestartet.
