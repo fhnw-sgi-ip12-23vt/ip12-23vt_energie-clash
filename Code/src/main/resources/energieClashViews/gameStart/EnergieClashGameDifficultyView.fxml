@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0"
+            stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fx:id="logoImage" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+    <VBox layoutX="348.0" layoutY="140.0" maxWidth="-Infinity" prefHeight="800.0"
+          prefWidth="1224.0" spacing="30"
+          styleClass="background-item">
+        <Label fx:id="difficultyTextLbl" text="StartText"/>
+        <VBox fx:id="difficultyVBox" alignment="CENTER" prefWidth="1204.0"/>
+    </VBox>
+</AnchorPane>
