@@ -51,7 +51,7 @@ Für die Dokumentation eigener System verwenden Sie besser die _plain_ Version.
 
 <<<<
 // 1. Anforderungen und Ziele
-include::src/01_introduction_and_goals.adoc[]
+include::src/01_introduction_and_goals.adoc[Test]
 
 <<<<
 // 2. Randbedingungen
