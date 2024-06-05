@@ -9,7 +9,7 @@ Dieses Readme dient zur Anleitung für den Umgang mit dem Projekt EnergieClash u
 == Überblick über das Projekt EnergieClash
 
 ****
-Alle wichtigen Elemente der Software-Architektur, sowie alle Informationen zu verwendeter Hardware finden Sie in der Dokumentation. Diese ist folgendermassen aufgeteilt:
+Alle wichtigen Elemente der Software-Architektur, sowie alle Informationen zu der verwendeter Hardware finden Sie in der Dokumentation. Diese ist folgendermassen aufgeteilt:
 
  * Softwaredokumentation (SAD)
  * Hardware-Dokumentation
@@ -33,8 +33,8 @@ Damit Sie mit der Codebase von EnergieClash arbeiten können, gibt es Folgendes 
 ==== Codebase
 ****
 .*maven*
-Das Projekt wird mit Maven build automation verwaltet, dafür finden Sie im root-Verzeichnis das Project-Object-Model file (das "POM.xml") mit allen notwendigen Konfigurationen.
-Informationen zu verwendeten Versionen können ebenfalls diesem POM entnommen werden.
+Das Projekt wird mit Maven build automation verwaltet. Dafür finden Sie im root-Verzeichnis die Project-Object-Model Datei (das "POM.xml") mit allen notwendigen Konfigurationen.
+Die Information zu den verwendeten Versionen können ebenfalls von diesem POM.xml entnommen werden.
 
 Im POM sind auch die Runtime Konfigurationen enthalten, zur Erstinstalltion, um das Projekt auf das Raspberry Pi zu deployen und weitere Konfigurationen zum Testen und Debuggen auf dem Raspberry Pi.
 
@@ -42,8 +42,7 @@ Im POM sind auch die Runtime Konfigurationen enthalten, zur Erstinstalltion, um 
 Damit diese Runtime Konfigurationen und alle Dependencies in der richtigen Version vorhanden sind, muss die "POM.xml"-Datei als Maven Projekt hinzugefügt werden. +
 https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Code/pom.xml[Link zum "POM.xml"-File]
 
-Als Zweites muss die Run-Konfiguration "Install Pi4j-library" ausgeführt werden. Diese wird benoetigt, weil im Projekt eine library verwendet wird, welche nich
-t im Maven Central Repository zum Download vorhanden ist. Die Library ist Teil des Projekts und wird mit der Run-Konfiguration lokal installiert. +
+Als Zweites muss die Run-Konfiguration "Install Pi4j-library" ausgeführt werden. Diese wird benötigt, weil im Projekt eine Bibliothek verwendet wird, welche nicht im Maven Central Repository zum Download vorhanden ist. Diese Bibliothek ist Teil des Projekts und wird mit der Run-Konfiguration lokal installiert. +
 
 Statt der Run Konfiguration kann auch folgender maven Befehl in der Kommandozeile ausgeführt werden:
 [source,shell]
@@ -53,7 +52,7 @@ mvn install:install-file -Dfile=./lib/pi4jlib-1.0.jar -DgroupId=com.pi4j -Dartif
 
 
 .*Gitlab CI/CD-Pipeline*
-Im Projekt finden Sie die link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Code/.gitlab-ci.yml[gitlab-ci.yml]-Datei welche die Gitlab Continuous Integration Pipeline konfiguriert. Builds werden bei jedem Push auf das Repository erstellt. Dann werden alle Tests durchgeführt und ein Checkstyle Report generiert. Falls das Projekt nicht korrekt erstellt werden kann, zum Beispiel wenn Tests fehlschlagen, wird der build als "failed"-markiert und der Auslöser wird informiert. +
+Im Projekt finden Sie die link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Code/.gitlab-ci.yml[gitlab-ci.yml]-Datei welche die Gitlab Continuous Integration Pipeline konfiguriert. Die Builds werden bei jedem Push auf das Repository erstellt. Danach werden alle Tests durchgeführt und ein Checkstyle Report wird generiert. Falls das Projekt nicht korrekt erstellt werden kann, zum Beispiel, wenn Tests fehlschlagen, wird der Build als "failed"-markiert und der Auslöser wird informiert. +
 link:https://docs.gitlab.com/ee/ci/[Weitere Informationen und Dokumentation zu Gitlab CI/CD Pipelines]
 
 .*Gitlab Pages*
@@ -74,7 +73,7 @@ Nach der OS Installation muss eine Maus, Tastatur und ein Monitor am RasPi anges
 * RaspberryPi mit einem Netzwerk verbinden. (Netzwerkassistent des OS nutzen)
 * Nach dem erfolgreichen Verbinden mit einem Netzwerk wird die IP-Adresse im Desktop-Hintergrundbild angezeigt.
 * Nun kann mit der Run Konfiguration "Run on PI(X11)" welche von Maven importiert wird, wenn das POM als Maven Projekt geladen wird, ausgeführt werden.
-- falls die Verbindung fehlschlägt, überprüfen Sie, ob sich der PC im gleichen LAN wie der Raspberry Pi befindet.
+- Falls die Verbindung fehlschlägt, überprüfen Sie, ob sich der PC im gleichen LAN wie der Raspberry Pi befindet.
 
 Zur Problemlösung und weiteren Informationen verweisen wir auf:
 
@@ -82,14 +81,14 @@ Zur Problemlösung und weiteren Informationen verweisen wir auf:
 * link:https://www.raspberrypi.com/documentation/[Raspberry Pi - Dokumentation]
 
 .*Run on Pi (X11)*
-Mit dem Ausführen der "Run on Pi(X11)"-Run Konfiguration werden alle für die Applikation benötigten Artifakte auf das RasPi in den "/home/pi/deploy"-Ordner kopiert. Zudem werden Skripts für die Installation des Autostarts der Applikation in diesen Ordner kopiert. All diese Artifakte sind in der "POM.xml"-Datei deklariert.
+Mit dem Ausführen der "Run on Pi(X11)"-Run Konfiguration werden alle für die Applikation benötigten Artifakte auf das RasPi in den "/home/pi/deploy"-Ordner kopiert. Zudem werden Skripts für die Installation des Autostarts der Applikation in diesen Ordner kopiert. Alle diese Artifakte sind in der "POM.xml"-Datei deklariert.
 
 .*Einrichten des Raspberry Pi*
-Für das Einrichten des Raspberry Pi's werden mehrere Skripts benötigt. Diese werden bei jedem deployment auf den Raspberry Pi kopiert. Diese Skripts sind unter anderem dazu da, die Monitor Einstellungen zu uebernehmen und den Autostart des Spiels einzurichten.
+Für das Einrichten des Raspberry Pi's werden mehrere Skripts benötigt. Diese werden bei jedem Deployment auf den Raspberry Pi kopiert. Diese Skripts sind unter anderem dazu da, die Monitor Einstellungen zu übernehmen und den Autostart des Spiels einzurichten.
 
-Dazu existiert eine Run-Konfiguration "Installscript on Pi" welche die Scripts auf dem Raspberry Pi ausfuehren und alles einrichten.
+Dazu existiert eine Run-Konfiguration "Installscript on Pi", welche die Scripts auf dem Raspberry Pi ausführen und alles einrichten.
 
-Alternativ kann man die Skripts auch direkt auf dem Raspberry Pi ausfuehren:
+Alternativ kann man die Skripts auch direkt auf dem Raspberry Pi ausführen:
 
 __1. Das Installationsskript "energieclash_installscript.sh" ausführbar machen:__
 [source,shell]
@@ -103,9 +102,9 @@ __2. Das Installationsskript ausführen__
 sudo /home/pi/deploy/energieclash_installscript.sh
 ----
 _Funktion des Installskripts:_ +
-Das Installskript verschiebt die Datei energieclash.service in den "/lib/systemd/system/" und startet den energieclash.service als systemd.service zudem macht er das Skript "energieclash_script.sh" ausführbar. +
+Das Installskript verschiebt die Datei energieclash.service in den "/lib/systemd/system/" und startet den energieclash.service als systemd.service. Zudem macht er das Skript "energieclash_script.sh" ausführbar. +
 
-Dieser Systemd-Service führt bei jedem Systemstart das Skript "energieclash_script.sh" aus, welches das Skript "energieclash_autostart.sh" ausführbar macht und dieses startet. +
+Dieser Systemd-Service führt bei jedem Systemstart das Skript "energieclash_script.sh" aus, welches das Skript "energieclash_autostart.sh" ausführbar macht und dann dieses startet. +
 
 Das Skript "energieclash_autostart.sh" führt die Java-Applikation mit den notwendigen Argumenten aus.
 
@@ -124,9 +123,9 @@ Die Skripts finden Sie hier: link:Code/src/main/resources/scripts/[energieclash/
 Die Konfiguration-Datei wird benutzt, um grundlegende Konfigurationen des Spiels zu definieren.
 ****
 .*Anpassen der Spieleinstellungen*
-Die Konfigurationsdatei "app.properties" kann auf dem Raspberry Pi unter "/home/pi/deploy/app.properties" angepasst werden. Oder im Projekt unter "/src/main/resources/app.properties".
+Die Konfigurationsdatei "app.properties" kann auf dem Raspberry Pi unter "/home/pi/deploy/app.properties" oder im Projekt unter "/src/main/resources/app.properties" angepasst werden.
 
-In dieser Datei können die zur Auswahl stehenden Spielmodi festgelegt werden. Ausserdem kann die Sprache und die Spiellaenge eingestellt werden. Details zu der Konfiguration sind in der link:Code/src/main/resources/app.properties[app.properties]- Datei beschrieben.
+In dieser Datei können die zur Auswahl stehenden Spielmodi festgelegt werden. Ausserdem kann die Sprache und die Spiellänge eingestellt werden. Details zu der Konfiguration sind in der link:Code/src/main/resources/app.properties[app.properties]- Datei beschrieben.
 
 
 ****
@@ -137,7 +136,7 @@ Dazu muss eine Maus und eine Tastatur am Raspberry Pi angeschlossen werden.
 .*Öffnen der AdminPage*
 Um auf die AdminPage zu gelangen, muss man beim Start des Spiels mit der Maus auf das grosse Logo in der Mitte klicken.
 
-Dann öffnet sich auf dem Screen des Sparers die Ansicht der AdminPage.
+Dann öffnet sich auf dem Screen des Sparenden die Ansicht der AdminPage.
 
 ._Add - Schaltfläche_
 Um neue Fragen, Antworten und Erklärungen hinzuzufügen.
@@ -194,4 +193,4 @@ Informationen zu den verwendeten Teilen finden Sie xref:_informationen_zur_hardw
 ****
 == Datenbank
 
-//TODO DB Skript + DB Skript oben in Erstinstallation noch erwaehnen.
+//TODO DB Skript + DB Skript oben in Erstinstallation noch erwähnen.
