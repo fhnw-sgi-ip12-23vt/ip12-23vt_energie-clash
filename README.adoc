@@ -16,7 +16,7 @@ Alle wichtigen Elemente der Software-Architektur, sowie alle Informationen zu ve
  * Testdokumentation
  * Programmierkonventionen
 
-https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu[Zur Dokumentation]
+https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/tree/main/Dokumentation[Zur Dokumentation]
 
 ****
 == Arbeit mit der Codebase
@@ -25,7 +25,7 @@ Guidelines und Anleitung zur Arbeit mit der Codebase.
 
 === Coding Conventions
 ****
-Zu den Coding Conventions geht es https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/blob/main/coding_conventions.adoc?ref_type=heads[hier].
+Zu den Coding Conventions geht es https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Dokumentation/coding_conventions.adoc[hier].
 ****
 === Set-up
 Damit Sie mit der Codebase von EnergieClash arbeiten können, gibt es Folgendes zu beachten:
@@ -40,7 +40,7 @@ Im POM sind auch die Runtime Konfigurationen enthalten, zur Erstinstalltion, um 
 
 .*Einrichten des Projekts*
 Damit diese Runtime Konfigurationen und alle Dependencies in der richtigen Version vorhanden sind, muss die "POM.xml"-Datei als Maven Projekt hinzugefügt werden. +
-https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/energie-clash/-/blob/main/pom.xml?ref_type=heads[Link zum "POM.xml"-File]
+https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Code/pom.xml[Link zum "POM.xml"-File]
 
 Als Zweites muss die Run-Konfiguration "Install Pi4j-library" ausgeführt werden. Diese wird benoetigt, weil im Projekt eine library verwendet wird, welche nich
 t im Maven Central Repository zum Download vorhanden ist. Die Library ist Teil des Projekts und wird mit der Run-Konfiguration lokal installiert. +
@@ -53,7 +53,7 @@ mvn install:install-file -Dfile=./lib/pi4jlib-1.0.jar -DgroupId=com.pi4j -Dartif
 
 
 .*Gitlab CI/CD-Pipeline*
-Im Projekt finden Sie die link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/energie-clash/-/blob/main/.gitlab-ci.yml?ref_type=heads[gitlab-ci.yml]-Datei welche die Gitlab Continuous Integration Pipeline konfiguriert. Builds werden bei jedem Push auf das Repository erstellt. Dann werden alle Tests durchgeführt und ein Checkstyle Report generiert. Falls das Projekt nicht korrekt erstellt werden kann, zum Beispiel wenn Tests fehlschlagen, wird der build als "failed"-markiert und der Auslöser wird informiert. +
+Im Projekt finden Sie die link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Code/.gitlab-ci.yml[gitlab-ci.yml]-Datei welche die Gitlab Continuous Integration Pipeline konfiguriert. Builds werden bei jedem Push auf das Repository erstellt. Dann werden alle Tests durchgeführt und ein Checkstyle Report generiert. Falls das Projekt nicht korrekt erstellt werden kann, zum Beispiel wenn Tests fehlschlagen, wird der build als "failed"-markiert und der Auslöser wird informiert. +
 link:https://docs.gitlab.com/ee/ci/[Weitere Informationen und Dokumentation zu Gitlab CI/CD Pipelines]
 
 .*Gitlab Pages*
@@ -155,13 +155,13 @@ Welche Komponenten verwendet und wie diese verbunden werden erfahren Sie hier.
 === Verwendete Hardware
 ****
 .*Datenblätter*
-Die Datenblätter sind link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/tree/main/hardware/Datasheets?ref_type=heads[hier] verfügbar.
+Die Datenblätter sind link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/tree/main/Dokumentation/hardware/Datasheets[hier] verfügbar.
 
 .*Schaltplan*
-link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/blob/main/hardware/Schaltplan/Schaltplan.drawio.svg?ref_type=heads[Schaltplan Energieclash]
+link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/tree/main/Dokumentation/hardware/Schaltplan[Schaltplan Energieclash]
 
 .*3D-Models*
-link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/tree/main/hardware/3D-Print-Models?ref_type=heads[3D-Print-Models]
+link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/tree/main/Dokumentation/hardware/3D-Print-Models[3D-Print-Models]
 ****
 
 == Troubleshooting
