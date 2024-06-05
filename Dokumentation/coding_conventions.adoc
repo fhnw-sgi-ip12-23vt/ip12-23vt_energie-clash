@@ -22,7 +22,7 @@ link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Cod
 
 Das Projekt wird mit dem link:https://maven.apache.org/[Maven] Build Automation Tool verwaltet. In der Maven "build"-Phase werden alle Java Dateien vom Maven Checkstyle plugin überprüft. Danach wird vom link:https://maven.apache.org/plugins/maven-site-plugin/["site"-Plugin] ein Report erstellt, welcher alle Verletzungen der Coding Conventions beinhaltet.
 
-Mit der link:https://docs.gitlab.com/ee/ci/pipelines/[Gitlab CI/CD Pipeline] wird bei jedem commit auf das Repository ein build durchgeführt und das Reporting erstellt.
-Das heisst, nach jedem commit liegt ein Report vor welcher jederzeit auf Gitlab Pages als HTML-Seite verfügbar ist.
+Mit der link:https://docs.gitlab.com/ee/ci/pipelines/[Gitlab CI/CD Pipeline] kann bei jedem commit auf das Repository ein build durchgeführt und das Reporting erstellt werden.
+Das heisst, nach jedem commit liegt ein Report vor welcher dann auf einer generierten Gitlab Page als HTML-Seite verfügbar ist.
 
-link:https://energie-clash-ip12-23vt-ip12-23vt-graueenergie-63da4f42f119428c.pages.fhnw.ch/checkstyle.html[Link zur generierten Gitlab Pages Seite]
+Das Konfigurationsfile der Pipeline finden Sie xref:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Code/.gitlab-ci.yml[hier].
