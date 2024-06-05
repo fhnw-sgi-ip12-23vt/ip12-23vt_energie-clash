@@ -1,0 +1,5 @@
+
+//for monitor setup:
+//TODO add monitor config and put into installscript
+//TODO add .config/autostart/lxrandr/ autostart config
+//TODO underscan into monitor.config and rm in boot/config.txt

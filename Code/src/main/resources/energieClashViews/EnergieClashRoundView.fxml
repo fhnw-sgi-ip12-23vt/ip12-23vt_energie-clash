@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fx:id="logoImage" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+    <StackPane fx:id="stackPane" prefHeight="1080.0" prefWidth="1920.0">
+        <Pane fx:id="defaultPane" prefHeight="1080.0" prefWidth="1920.0">
+            <VBox fx:id="answerVBox" layoutX="448.0" layoutY="100.0" maxWidth="-Infinity" prefHeight="880.0" prefWidth="1024.0" spacing="20.0" styleClass="background-item">
+                <HBox alignment="TOP_RIGHT" prefWidth="1024.0">
+                    <Label fx:id="timerLbl" text="Timer" />
+                </HBox>
+            </VBox>
+        </Pane>
+        <StackPane fx:id="waitingPane" layoutX="610.0" layoutY="390.0" maxHeight="-Infinity" maxWidth="700.0" prefHeight="300.0" prefWidth="700.0" styleClass="background-item" visible="false" />
+    </StackPane>
+</AnchorPane>
