@@ -1,6 +1,6 @@
 = EnergieClash
 
-image: Code/src/main/resources/images/logo.png["EnergieClash Logo]
+image:Code/src/main/resources/images/logo.png["EnergieClash Logo]
 
 == Readme
 
