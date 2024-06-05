@@ -145,44 +145,486 @@ Die folgende Tabelle beschreibt die Stakeholder der Softwarearchitektur von Ener
 
 <<<<
 // 2. Randbedingungen
-include::src/02_architecture_constraints.adoc[]
+[[section-architecture-constraints]]
+== Randbedingungen
+
+[role="arc42help"]
+****
+Die folgende Tabelle beschreibt die Randbedingungen der Softwarearchitektur von Energie-Clash
+[cols="1,2" options="header"]
+|===
+|Randbedingung  |Erläuterung
+| Implementierung in Java 17  | Das Spiel soll in Java 17 implementiert werden
+| Raspberry Pi  | Das Spiel wird mittels eines Raspberry Pis realisiert
+| Pi4J Library  | Da Java 17 und ein Raspberry Pi benutzt werden müssen, wird die Pi4J Library gebraucht.
+| SQLite | Falls eine Datenbank gebraucht werden sollte, muss SQLite verwendet werden, da SQLite eine server-less Architektur verwendet. Das heisst, dass das Datenbankverwaltungssystem Teil der Applikation ist.
+| Konfigurationsdatei mit java.util.Properties | Das Spiel wird verschiedene konfigurierbare Parameter enthalten. Dies wird mittels einer java.util.Properties-Konfigurationsdatei gelöst. Das Spiel soll innert 5 Minuten konfiguriert werden können.
+| Mehrsprachig | Das Spiel soll mehrsprachig sein. Das bedeutet, dass Texte und Strings ausgelagert und nicht hart im Code vorhanden sind.
+| Ohne Internet | Wenn möglich soll das Spiel ohne Internet funktionieren. WLAN wäre jedoch möglich.
+| Low Latency | Das Spiel soll eine tiefe Antwortszeit haben, damit das Interesse des/der Spieler/-in vorhanden bleibt.
+| Keine zusätzlichen Webserver | Das Spiel soll keine zusätzlichen Webserver verwenden.
+|===
+****
+
 
 <<<<
 // 3. Kontextabgrenzung
-include::src/03_system_scope_and_context.adoc[]
+[[section-system-scope-and-context]]
+== Kontextabgrenzung
+
+[role="arc42help"]
+
+Dieser Abschnitt beschreibt das Umfeld unseres Systems. Es soll beschreiben, wie die Schnittstellen mit Benutzer/-innen und Fremdsystemen aussehen.
+
+=== Fachlicher Kontext
+
+[role="arc42help"]
+****
+image:../images/03_FachlicheKontextAbgrenzung.png[BlackBoxDiagram]
+
+.Player
+EnergieClash wird zu zweit gespielt. Ein/-e Spieler/-in spielt als Energieverschwender/-in gegen eine/-n andere/-n Spieler/-in als EnergieSparer. Dabei lesen sie Texte auf dem Bildschirm und interagieren mit den Knöpfen
+
+.Admin
+Das Spiel EnergieClash soll von Administratoren verwaltet werden können. Durch das einstecken von Maus und Tastatur erhält der Admin Zugang zum Innenleben des System. Man kann Verschiedene Parameter konfigurieren und die CRUD-Operationen für die Fragen ausführen.
+****
+=== Technischer Kontext
+
+[role="arc42help"]
+****
+Da es keine Fremdsysteme, wie APIs oder ähnliches gibt, gibt es keine technischen Schnittstellen.
+****
+
+
 
 <<<<
 // 4. Lösungsstrategie
-include::src/04_solution_strategy.adoc[]
+[[section-solution-strategy]]
+== Lösungsstrategie
+
+[role="arc42help"]
+****
+.Qualitätsziele
+Die folgende Tabelle zeigt, welche Entscheidungen getroffen wurden, um die Qualitätsziele zu erreichen.
+[cols="1,2" options="header"]
+|===
+|Qualitätsziel  | Erläuterung
+| Benutzerfreundlichkeit  | Es wird eine grafische Benutzerschnittstelle mit JavaFX benutzt, um die Benutzer/-innen visuell anzuziehen. Dazu werden auch Knöpfe als physische Benutzereingaben verwendet
+| Wartbarkeit  | Es wird mittels einer java.util.Properties-Konfigurationsdatei konfigurierbare Parameter festgehalten. Zusätzlich werden in einem "Admin"-Screen die Fragen angezeigt und die CRUD-Operation werden mit einer grafischen Oberfläche möglich sein.
+| Zuverlässigkeit  | Die wichtigsten Funktionen werden mittels Unittests getestet und mögliche Exceptions werden in die Console geschrieben.
+|===
+****
+
+****
+.Allgemeine Entscheidungen
+- Das Programm wird möglichst nach dem MVC-Pattern strukturiert, da es ein bewährtes und übersichtliches Pattern ist.
+- Es werden möglichst viele Best-Practices, wie DRY (Don't repeat yourself), KISS(Keep it simple stupid) oder das Single-responsiblity principle angewendet. Dies dient zur Abstraktion und zur einfachen Erweiterbarkeit.
+- Anfangs werden GUI und Spielfunktionen getrennt, damit die Funktionalitäten unabhängig von einander implementiert werden können.
+****
+
+
 
 <<<<
 // 5. Bausteinsicht
-include::src/05_building_block_view.adoc[]
+[[section-building-block-view]]
+== Bausteinansicht
+
+[role="arc42help"]
+
+
+=== Ebene 0
+****
+.Kontextebene
+Systemabgrenzung
+
+
+image::../images/Bausteinansicht_SAD_V2-Ebene0.drawio.png[Ebene 0]
+
+****
+
+=== Ebene 1
+
+****
+.EnergieClash System
+Das System von EnergieClash ist nach dem Model-View-Controller Konzept aufgebaut. Das MVC-Konzept ermöglicht eine klare Trennung der Komponenten.
+
+image::../images/Bausteinansicht_SAD_V2-Ebene 1.drawio.png[Ebene 1]
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Verantwortung**
+| controller | Erstellt Instanzen des Spiels für den jeweiligen Spielmodus und enthaltet die Starter-Klasse. Steuert Interaktionen zwischen den "model"- und "view"-Klassen.
+| view | Instanziiert die physischen Buttons zur Nutzereingabe und enthaltet die verschiedenen Ansichten der GUI.
+| model |Stellt die Verbindung zur Datenbank "energieclash.sqlite" her und stellt die Daten den "view"- und "controller"-Klassen zur Verfügung. Beinhaltet ausserdem die Spiellogik.
+|energieclash.sqlite|Datenbank für die Spielinhalte (Fragen, Antworten, etc...).
+|===
+****
+=== Ebene 2
+****
+.model
+Im Model werden die Spielkonzepte definiert und es liefert die Daten für die Spielrunden.
+
+image::../images/Bausteinansicht_SAD_V2-Model.drawio.png["Package: model"]
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Verantwortung**
+| gamelogic | Die Spiellogik definiert Spielrollen, Spieler, Spielrunde, Schwierigkeit und Punktevergabe.
+| EnergieClashModel| Anbindung an die Datenbank. Stellt Methoden für die Interaktion mit der Datenbank zur Verfügung.
+| EnergieClashRoundSupplier| Stellt die Spielrunden zur Verfügung.
+|===
+
+'''
+.view
+Beinhaltet die verschiedenen Ansichten des Spiels und stellt die physischen Eingabegeräte zur Verfügung.
+
+image::../images/Bausteinansicht_SAD_V2-View.drawio.png["Package: view"]
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Verantwortung**
+| admin | Ansichten der Admin-View für Änderungen an Spielinhalten in der Datenbank
+| game | Die verschiedenen Ansichten des Spiels
+| gamestart | Ansichten zur Auswahl des Spielmodis, Schwierigkeit und des Tutorials
+| util | Stellt die Buttons zur Verfügung
+|AbstractSynchView| Bietet Methode und Attribute zur Synchronisation beider Spieler mit dem Zustand "readyToMoveOn"
+|AbstractSynchEnergieClashView| Ermöglicht es den Views den Spieler und die Buttons zuzuweisen. Die View-Klassen aus dem "game"- und "gamestart"-Package erben von dieser Klasse.
+|===
+
+'''
+.controller
+Erstellt Instanzen des Spiels Anhand der ausgewählten Spielmodi und Spieleinstellungen("Properties"). Startet die Applikation.
+
+image::../images/Bausteinansicht_SAD_V2-Controller.drawio.png["Package: controller"]
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Verantwortung**
+|rapidfire| Klassen aus dem "rapidfire"-Package erstellen Instanzen des rapidfire Spielmodus
+|turnbased| Klassen aus dem "turnbased"-Package erstellen Instanzen des rundenbasierten Spielmodus
+|_GameFactory_ | Speichert die "Properties", also die Spieleinstellungen, die zum Erstellen von Spielinstanzen benötigt werden
+|_EnergieClashFactory_| Factory zum Erstellen von Spielinstanzen mit einem dazugehörigen EnergieClashModel. Klassen aus dem "turnbased"-Package erben von "EnergieClashFactory"
+|AppPropertiesLoader|Lädt die Spieleinstellungen aus dem "app.properties"-File
+| GameStarter | Startet die Applikation, instanziiert die Properties und stellt die Stages zur Verfügung
+|Controller| Enthält beide Stages (für beide Bildschirme), beide Spielrollen und die Spracheinstellungen. Erstellt eine neue Instanz des EnergieClashModel
+|_EnergieClash_| Speichert die Runden, die aktuelle Runde und die Schwierigkeitseinstellung
+|EnergieClashStartController|Controller für die Auswahl des Spielmodus, des Schwierigkeitsgrads und der Funktionalität des Admins.
+|===
+
+'''
+.energieclash.sqlite
+Ansicht der Datenbank-Tabellen.
+
+image::../images/Bausteinansicht_SAD_V2-Datenbank.drawio.png["Database: energieclash.sqlite"]
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Verantwortung**
+| questions | Die Tabelle questions beinhaltet die Fragen des Spiels.
+| answer_grade | Die Tabelle answer_grade beinhaltet die verschiedenen Gewichtungsstufen der Antworten.
+| answers | Die Tabelle answers beinhaltet die Antworten zu entsprechenden Fragen.
+|===
+****
+
+=== Ebene 3
+****
+.gamelogic
+In diesem Package ist die Logik der Spielkonzepte definiert.
+
+image::../images/Bausteinansicht_SAD_V2-model_gamelogic.drawio.png["Package: gamelogic"]
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Verantwortung**
+| EnergieClashRound | Eine Spielrunde bestehend aus: einer id, einer Frage, Möglichen Antworten, dem Schwierigkeitsgrad, der Spracheinstellung und der Erklärung zur Frage.
+|EnergieClashPlayer| Enthaltet die Spielrolle("EnergieClashRole") und die Punktzahl.
+|EnergieClashRole| Definiert die beiden Spielrollen "waster" und "saver". Passt das Bewertungsraster der möglichen Antworten den beiden Spielrollen an.
+|===
+****
 
 <<<<
 // 6. Laufzeitsicht
-include::src/06_runtime_view.adoc[]
+[[section-runtime-view]]
+== Laufzeitsicht
+
+image:../images/06_Laufzeitsicht.png[Sequenzdiagram]
+
+[role="arc42help"]
+****
+.Inhalt
+Diese Sicht erklärt konkrete Abläufe und Beziehungen zwischen Bausteinen in Form von Szenarien aus den folgenden Bereichen:
+
+*  Wichtige Abläufe oder _Features_:
+Wie führen die Bausteine der Architektur die wichtigsten Abläufe durch?
+*  Interaktionen an kritischen externen Schnittstellen:
+Wie arbeiten Bausteine mit Nutzern und Nachbarsystemen zusammen?
+* Betrieb und Administration: Inbetriebnahme, Start, Stop.
+* Fehler- und Ausnahmeszenarien
+
+Anmerkung:
+Das Kriterium für die Auswahl der möglichen Szenarien (d.h. Abläufe) des Systems ist deren Architekturrelevanz.
+Es geht nicht darum, möglichst viele Abläufe darzustellen, sondern eine angemessene Auswahl zu dokumentieren.
+
+.Motivation
+Sie sollten verstehen, wie (Instanzen von) Bausteine(n) Ihres Systems ihre jeweiligen Aufgaben erfüllen und zur Laufzeit miteinander kommunizieren.
+
+Nutzen Sie diese Szenarien in der Dokumentation hauptsächlich für eine verständlichere Kommunikation mit denjenigen Stakeholdern, die die statischen Modelle (z.B. Bausteinsicht, Verteilungssicht) weniger verständlich finden.
+
+.Form
+Für die Beschreibung von Szenarien gibt es zahlreiche Ausdrucksmöglichkeiten.
+Nutzen Sie beispielsweise:
+
+* Nummerierte Schrittfolgen oder Aufzählungen in Umgangssprache
+* Aktivitäts- oder Flussdiagramme
+* Sequenzdiagramme
+* BPMN (Geschäftsprozessmodell und -notation) oder EPKs (Ereignis-Prozessketten)
+* Zustandsautomaten
+* ...
+
+.Weiterführende Informationen
+
+Siehe https://docs.arc42.org/section-6/[Laufzeitsicht] in der online-Dokumentation (auf Englisch!).
+
+****
+
+=== _<Bezeichnung Laufzeitszenario 1>_
+
+*  <hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
+*  <hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem Szenario erläutern>
+
+=== _<Bezeichnung Laufzeitszenario 2>_
+
+...
+
+=== _<Bezeichnung Laufzeitszenario n>_
+
+...
+
 
 <<<<
 // 7. Verteilungssicht
-include::src/07_deployment_view.adoc[]
+[[section-deployment-view]]
+== Verteilungssicht
+
+[role="arc42help"]
+****
+In diesem Abschnitt wird die technische Infrastruktur beschrieben.
+
+image::../images/07_Verteilungssicht.png["07_Verteilungssicht"]
+****
+=== Software-Voraussetzungen:
+****
+* Pi4J OS Version 2.4.0 oder höher.
+* Java Runtime Environment SE Version 17 oder höher.
+* JavaFX Version 17 oder höher.
+****
+=== Hardware-Voraussetzungen:
+****
+* Raspberry Pi 4 (Empfehlung: mehr als 1GB RAM)
+* 2 Bildschirme mit HDMI (Auflösung: 1920x1080 30+Hz)
+* 10 Buttons
+* 20 LEDs
+* 3 Kit I2C GPIO Extensions
+****
+****
+.Autostart
+"energieclash-X.X.X.jar" enthält den kompilierten Java Sourcecode mit sämtlichen Abhängigkeiten, welche beim Remote-Deploy übergeben werden. Das PUI, das FXML und die SQLite Datenbank werden hier benutzt.
+
+"energieclash.service" wird bei Systemstart automatisch gestartet und führt "energieclash_script.sh" aus.
+
+Dieses Skript gibt dem "energieclash_autostart.sh"-Skript Execute-Rechte und wird ebenfalls ausgefüht.
+
+"energieclash_autostart.sh" startet die JVM mit EnergieClash.
+
+'''
+Dies wird deswegen gemacht, da man in Services unter systemd üblicherweise nicht mehrere Befehle ausführt, sondern wie hier auf andere Skripts verweist. Deshalb haben wir ein Middleman-Skript, das das Autostart-Skript, welches bei einem Remote-Deploy mit SCP auf das Raspberry Pi kopiert wird, ausführt.
+****
+Alles liegt auf demselben Rechner nur beim ersten Remote-Deploy braucht es weitere Schritte (siehe link:../../README.adoc[README])
+
 
 <<<<
 // 8. Querschnittliche Konzepte
-include::src/08_concepts.adoc[]
+[[section-concepts]]
+== Querschnittliche Konzepte
+
+=== Benutzungsoberfläche
+
+Als UI wird JavaFX mit FXML verwendet. Das ermöglicht die Bedienungen mit Maus&Tastatur.
+
+Da das Spiel jedoch mit phsyischen Knöpfen gespielt wird, werden Spielaktivitäten auf die Knöpfe gemappt.
+[source,java]
+----
+import ch.graueenergie.energieclash.util.Button;
+...
+button.onDown(() -> Platform.runLater(this::doSomething))
+----
+
+Funktionen, die z. B. für Administratoren gedacht sind, sind für Maus&Tastatur ausgelegt.
+[source,java]
+----
+import javafx.scene.control.Button;
+...
+button.setOnAction(actionEvent -> doSomething());
+----
+=== Logging & Exception-Handling
+
+Ein gutes Logging ist wichtig für die Fehlerbehandlung und Debugging.
+Deshalb sollen, wo es sinnvoll ist, Logging-Einträge gemacht werden.
+Z.B. bei einem Knopfdruck soll ein Logging-Eintrag gemacht werden.
+
+[source,java]
+----
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+...
+Logger LOGGER = LogManager.getLogger(Clazz.class);
+...
+LOGGER.info("Log this");
+----
+Wenn Exception geworfen werden, ist es manchmal sinnvoller die Exception zu fangen und zu verarbeiten.
+Man soll selber abwägen, ob Exceptions gefangen werden sollen oder nicht.
+Dies soll jedoch mit den Product-Owners abgesprochen werden.
+
+[source,java]
+----
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+...
+Logger LOGGER = LogManager.getLogger(Clazz.class);
+...
+try {
+...
+}
+catch (Exception e){
+	LOGGER.error(e);
+}
+----
+
+=== CRUD-Operationen Datenbank
+
+CRUD-Operationen an der Datenbank sollen ausschiesslich über das Model laufen.
+Dies verhindert Inkonsistenzen des Verhaltens bei den Operationen und vereinfacht Debugging.
+Zusätzlich wird die Wartung einfacher.
+
+[source,java]
+----
+import ch.graueenergie.energieclash.model.EnergieClashModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+...
+EnergieClashModel model = new EnergieClashModel(LogManager.getLogger(EnergieClashModel.class));
+...
+model.someCrudOperation();
+----
+
 
 <<<<
 // 9. Entscheidungen
-include::src/09_architecture_decisions.adoc[]
+[[section-design-decisions]]
+== Architekturentscheidungen
+
+[role="arc42help"]
+****
+In diesem Abschnitt werden die wichtigsten Architekturentscheidungen beschrieben.
+
+[cols="1,2" options="header"]
+|===
+|Entscheidung  |Erläuterung
+|Grundlegene Architektur  |Wie im link:04_solution_strategy.adoc[vierten Kapitel] beschrieben, wird für die grundlegene Architektur das MVC-Pattern benutzt. Der Grund ist, dass unser Team mit dieser Architektur am meisten Erfahrung hat. Ausserdem ist MVC weit verbreitet und hat sich bei vielen anderen Programmen bewährt.
+|Interface Controller - View  |Die Kommunikation zwischen View und Controller erfolgt über ein Observer-Pattern. Der Controller wird als Observer registriert und die View-Klassen werden dem hinzugefügt.
+|Erstellung des Spiels mit Factory-Pattern |Beim Start des Programms wird eine abstrakte GameFactory verwendet um das eigentliche Spiel zu erstellen. Anhand der Auswahl des/r Spielers/Spielerin wird das entsprechende Object erstellt. Dies vereinfacht es, ein neues Spiel bzw. einen neuen Spielmodus zu implementieren.
+|===
+****
+
 
 <<<<
 // 10. Qualitätsanforderungen
-include::src/10_quality_requirements.adoc[]
+[[section-quality-scenarios]]
+== Qualitätsanforderungen
+
+=== Qualitätsbaum
+****
+image::../images/10_Qualitätsbaum.png["Qualitätsbaum"]
+****
+=== Qualitätsszenarien
+****
+In diesem Abschnitt werden die Qualitätsszenarien beschrieben.
+
+[cols="1,2" options="header"]
+|===
+|ID  | Szenario
+| Z01  | Nach 50 gespielten Runden funktioniert das Spiel gleich schnell und fehlerlos wie bei der ersten Runde.
+| Z02  | Das Spiel akzeptiert nur gültige Eingaben und werden richtig verarbeitet.
+| E01  | Nach Drücken eines Knopfs antwortet das System nach maximal einer halben Sekunde.
+| B01  | Beim Start des Spiels können die Spieler entscheiden, welchen Spielmodus und auf welchem Schwierigkeitsgrad sie spielen möchten.
+| B02  | Die Bedienung und Benutzeroberfläche ermöglichen neuen Spielern nach einer Minute problemlos ein Spiel zu beginnen.
+| W01  | Ein erfahrerer Java-Entwickler möchte eine Änderung am Spiel vornehmen. Dank der SAD und den JavaDoc-Kommentaren benötigt er, inklusive des Einlesens, maximal zwei Tage.
+| W02  | Ein Administrator des Spiels möchte das Spiel konfigurieren. Dank der SAD und den Kommentaren in der Konfigurations-Datei benötigt er maximal fünf Minuten.
+| W03  | Ein erfahrener Java-Entwickler möchte einen neuen Spielmodus hinzufügen. Dank der SAD, den JavaDoc-Kommentaren und der abstrakten Code-Struktur benötigt er maximal eine Woche.
+| W04  | Ein Administrator des Spiels möchte Spielfragen hinzufügen, löschen oder anpassen. Dank des integrierten Admin-Dashboards kann er das in 15 Minuten erledigen.
+|===
+****
+
+
 
 <<<<
 // 11. Risiken
-include::src/11_technical_risks.adoc[]
+[[section-technical-risks]]
+== Risiken und technische Schulden
+
+[role="arc42help"]
+****
+.Inhalt
+Eine nach Prioritäten geordnete Liste der erkannten Architekturrisiken und/oder technischen Schulden.
+
+.Motivation
+"Risikomanagement ist Projektmanagement für Erwachsene."
+-- Tim Lister, Atlantic Systems Guild
+
+Unter diesem Motto sollten Sie Architekturrisiken und/oder technische Schulden gezielt ermitteln, bewerten und Ihren Management-Stakeholdern (z.B. Projektleitung, Product-Owner) transparent machen.
+
+.Form
+Liste oder Tabelle von Risiken und/oder technischen Schulden, eventuell mit vorgeschlagenen Maßnahmen zur Risikovermeidung, Risikominimierung oder dem Abbau der technischen Schulden.
+
+
+.Weiterführende Informationen
+
+Siehe https://docs.arc42.org/section-11/[Risiken und technische Schulden] in der online-Dokumentation (auf Englisch!).
+****
+
+
 
 <<<<
 // 12. Glossar
-include::src/12_glossary.adoc[]
+[[section-glossary]]
+== Glossar
+
+[role="arc42help"]
+In dieser Tabelle werden genannte technische oder fachliche Begriffe im Zusammenhang mit dem System erklärt.
+
+[cols="1,2" options="header"]
+|===
+// Worte alphabetisch ordnen
+|Wort  | Erklärung
+| JavaDoc  | Tool zur Dokumentation von Code. Spezielle Kommentare im Code um Glossare mit Begriffen oder Funktionen zu erstellen.
+| SAD  | Software-Architecture-Documentation. Dieses Dokument.
+| Pi4J Library | Eine Java-Bibliothek, die speziell für die Interaktion mit den GPIO (General Purpose Input/Output) Pins des Raspberry Pi entwickelt wurde. Sie erleichtert die Steuerung von Sensoren, Aktoren und anderen elektronischen Komponenten, die über die GPIO-Pins des Raspberry Pi angeschlossen sind.
+| JavaFX | Eine Java-Bibliothek zur Erstellung von plattformübergreifenden grafischen Benutzeroberflächen (GUIs). In der Lösungsstrategie von Energie-Clash wird JavaFX verwendet, um eine ansprechende und benutzerfreundliche Benutzeroberfläche für das Spiel zu erstellen.
+| MVC-Pattern | Das Model-View-Controller (MVC)-Muster ist ein Architekturmuster, das die Strukturierung von Anwendungen in drei Hauptkomponenten unterstützt: das Model, die View und den Controller. Es wird in der grundlegenden Architektur von Energie-Clash verwendet, um eine klare Trennung zwischen Datenmodell, Benutzeroberfläche und Anwendungslogik zu erreichen.
+| Observer-Pattern |  Ein Entwurfsmuster, das verwendet wird, um eine abhängige Beziehung zwischen Objekten zu definieren, sodass Änderungen an einem Objekt automatisch an andere Objekte weitergegeben werden können.
+| DRY (Don't repeat yourself) | Ein Prinzip der Softwareentwicklung, das besagt, dass jede Information oder jedes Konzept in einem System nur an einer einzigen Stelle definiert sein sollte. Das Ziel ist es, Redundanz zu vermeiden und die Wartbarkeit des Codes zu verbessern.
+| KISS (Keep it simple, stupid) | Ein Designprinzip, das besagt, dass Systeme so einfach wie möglich gehalten werden sollten, um sie leichter zu verstehen, zu warten und zu erweitern.
+| Single-responsibility principle | Ein Prinzip der Objektorientierten Programmierung, das besagt, dass eine Klasse nur eine einzige Verantwortung haben sollte. Durch die Aufteilung von Klassen
+| MUSS / DARF NICHT  | Eine absolute Anforderung, über die nicht verhandelt werden kann.Ein System, das diese Anforderung nicht erfüllt, wird disqualifiziert
+| SOLL / SOLL NICHT  | Eine empfohlene Anforderung, über die verhandelt werden kann. Je mehr empfohlene Anforderungen umgesetzt werden, desto besser. Es muss eine Abhilfe geben, die das Fehlen der Anforderung kompensieren kann
+| DARF / MUSS NICHT  | Eine optionale Anforderung. Ein System kann die Anforderung implementieren, wenn der Anbieter dies beschließt. Die Beteiligten nutzen die Anforderung, wenn das System sie erfüllt.
+| Energie-Sparende | Eine von zwei Rollen die im Spiel vorkommt. Der Sparende soll sich während dem Spiel sparmsam verhalten.
+| Energie-Verschwendende  | Eine von zwei Rollen die im Spiel vorkommt. Der Verschwendende soll sich während dem Spiel verschwenderisch verhalten.
+| MOS (Mean opinion score) | Der Mean Opinion Score (MOS) ist eine Kennzahl zur Bewertung der Qualität von Sprach- und Videoübertragungen, basierend auf Nutzerbewertungen auf einer Skala von 1 (sehr schlecht) bis 5 (sehr gut). Er wird häufig in der Telekommunikationsbranche verwendet, um die Zufriedenheit der Nutzer mit Kommunikationsdiensten zu messen.
+|===
+
+
+
+
+
+
