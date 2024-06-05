@@ -11,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 
 import java.util.List;
 
@@ -44,9 +43,9 @@ public abstract class AbstractSynchEnergieClashView extends AbstractSynchView {
         ImageView imageView = new ImageView();
         imageView.setImage(button.getButtonColor().getButtonImage());
 
-        Text textText = new Text(text);
-        textText.setStyle("-fx-font-size: 40px; -fx-fill: black; -fx-wrap-text: true");
-        HBox hBox = new HBox(imageView, textText);
+        Label textLbl = new Label(text);
+        textLbl.setWrapText(true);
+        HBox hBox = new HBox(imageView, textLbl);
         hBox.setSpacing(10);
         hBox.getStyleClass().add("answer");
         return hBox;

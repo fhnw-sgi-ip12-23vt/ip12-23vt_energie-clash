@@ -12,7 +12,7 @@
     <ImageView fx:id="logoImage" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
     <StackPane fx:id="stackPane" prefHeight="1080.0" prefWidth="1920.0">
         <Pane fx:id="defaultPane" prefHeight="1080.0" prefWidth="1920.0">
-            <VBox fx:id="answerVBox" layoutX="448.0" layoutY="100.0" maxWidth="-Infinity" prefHeight="880.0" prefWidth="1024.0" spacing="20.0" styleClass="background-item">
+            <VBox fx:id="answerVBox" layoutX="310.0" layoutY="100.0" maxWidth="-Infinity" prefHeight="880.0" prefWidth="1300.0" spacing="20.0" styleClass="background-item">
                 <HBox alignment="TOP_RIGHT" prefWidth="1024.0">
                     <Label fx:id="timerLbl" text="Timer" />
                 </HBox>
