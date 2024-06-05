@@ -108,14 +108,20 @@ Dieser Systemd-Service führt bei jedem Systemstart das Skript "energieclash_scr
 
 Das Skript "energieclash_autostart.sh" führt die Java-Applikation mit den notwendigen Argumenten aus.
 
+Zudem werden Einstellungen für die beiden Monitore vorgenommen. Die Einstellungen sind wichtig, damit die Bildschirme in der gewünschten Auflösung starten.
+
 -> Dieses Installationsskript muss nach einer Neuinstallation ausgeführt werden. Der Autostart funktioniert nach jedem deployen mit "Run on Pi(X11)" mit der neusten Version der Java Applikation. Das Installationsskript muss also nur bei der Erstinstallation des RasPis ausgeführt werden.
 
-//TODO genaue Beschreibung der Funktionsweise der Monitor Skripts und Debug Skripts
-//TODO Skripts FYI Windows User -> Einstellung IDE wegen Shellscripts auf Windows.
+.*Datenbank*
+Nach dem Ausführen des Installationsskripts muss noch die sqlite Datenbank auf den RasPi kopiert werden. Dafür gibt es eine Run-Konfiguration, diese heisst "Move sqlite to RasPi".
+-> Wichtig: Wenn diese ausgeführt wird und schon eine Datenbank auf dem RasPi existiert, wird diese gelöscht und alle Daten, welche per Admin-Screen eingegeben wurden, gehen verloren!
 
+Alternativ kann die Sqlite Datenbank auch per scp, oder sonst auf eine manuelle Art auf den Raspberry Pi verschoben werden. Wichtig ist, dass sich die Datenbank schlussendlich auf dem Pi im Ordner /home/pi/deploy befindet.
+****
+
+Details zur Funktionsweise der Skripts finden Sie in den jeweiligen Kommentaren.
 Die Skripts finden Sie hier: link:Code/src/main/resources/scripts/[energieclash/src/main/resources/scripts]
 
-****
 
 == Guide zur Spielkonfiguration
 
@@ -125,10 +131,10 @@ Die Konfiguration-Datei wird benutzt, um grundlegende Konfigurationen des Spiels
 .*Anpassen der Spieleinstellungen*
 Die Konfigurationsdatei "app.properties" kann auf dem Raspberry Pi unter "/home/pi/deploy/app.properties" oder im Projekt unter "/src/main/resources/app.properties" angepasst werden.
 
-In dieser Datei können die zur Auswahl stehenden Spielmodi festgelegt werden. Ausserdem kann die Sprache und die Spiellänge eingestellt werden. Details zu der Konfiguration sind in der link:Code/src/main/resources/app.properties[app.properties]- Datei beschrieben.
-
+In dieser Datei können die zur Auswahl stehenden Spielmodi festgelegt werden.Ausserdem kann die Sprache und die Spiellänge eingestellt werden.Details zu der Konfiguration sind in der link:Code/src/main/resources/app.properties[app.properties]-Datei beschrieben.
 
 ****
+[#_adminpage]
 ===  AdminPage
 Die AdminPage bietet die Möglichkeit direkt am Raspberry Pi auf die "energieclash.sqlite"Datenbank zuzugreifen, um die Fragen und Antworten des Spiels zu verwalten.
 Dazu muss eine Maus und eine Tastatur am Raspberry Pi angeschlossen werden.
@@ -193,4 +199,15 @@ Informationen zu den verwendeten Teilen finden Sie xref:_informationen_zur_hardw
 ****
 == Datenbank
 
-//TODO DB Skript + DB Skript oben in Erstinstallation noch erwähnen.
+****
+Änderungen an den Datensätzen können an zwei Orten vorgenommen werden:
+
+* Im Admin Dashboard - sehen Sie dazu den Abschnitt: xref:_adminpage[Adminpage]
+* Direkt an der sqlite Datei (z.B. mit der IDE)
+
+Damit das Spiel auf die Datensätze zugreifen kann, muss sich die Sqlite-Datenbank im Ordner /home/pi/deploy befinden.
+
+Die Datenbank kann manuell, oder mit der Run-Konfiguration: "Move sqlite to RasPi" auf den RasPi kopiert werden.
+
+-> Wichtig: Wenn die Run-Konfiguration ausgeführt wird und sich schon eine Sqlite-Datenbank auf dem RasPi befindet, wird diese gelöscht und alle Daten, welche sich nur lokal auf dem RasPi befinden - also alle Daten, welche per Admin-Screen eingegeben wurden, gehen verloren!
+****
