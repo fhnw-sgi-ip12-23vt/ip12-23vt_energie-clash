@@ -1,7 +1,7 @@
 == TC 4.6: Latenz Zurück zum Start
 
 === Beschreibung
-Bei diesem Test soll geprüft werden, ob die Latenz beim Zurückkehren zum Start XXX Sekunden beträgt.
+Bei diesem Test soll geprüft werden, ob die Latenz beim Zurückkehren zum Start 1 Sekunde beträgt.
 
 === Annahmen und Voraussetzungen:
 Damit der Spieler zurück zum Startbildschirm gelangen kann, muss das Spiel eingeschaltet sein und die Fragerunde beendet sein.
@@ -15,4 +15,4 @@ Damit der Spieler zurück zum Startbildschirm gelangen kann, muss das Spiel eing
 
 *Erwartetes Ergebnis:*
 
-. Der Startbildschirm wird nach XXX Sekunden angezeigt.
+. Der Startbildschirm wird nach 1 Sekunde angezeigt.

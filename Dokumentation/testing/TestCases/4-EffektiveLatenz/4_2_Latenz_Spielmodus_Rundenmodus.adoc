@@ -1,7 +1,7 @@
 == TC 4.2: Latenz Spielmodus Rundenmodus
 
 === Beschreibung
-Bei diesem Test soll geprüft werden, ob die Latenz beim Auswählen des Spielmodi XXX Sekunden beträgt.
+Bei diesem Test soll geprüft werden, ob die Latenz beim Auswählen des Spielmodi 1 Sekunde beträgt.
 
 === Annahmen und Voraussetzungen:
 Damit der Spieler den Spielmodus auswählen kann, muss das Spiel eingeschaltet sein und das Spiel gestartet sein.
@@ -15,4 +15,4 @@ Damit der Spieler den Spielmodus auswählen kann, muss das Spiel eingeschaltet s
 
 *Erwartetes Ergebnis:*
 
-. Der Spielmodus wird nach XXX Sekunden ausgewählt.
+. Der Spielmodus wird nach 1 Sekunde ausgewählt.

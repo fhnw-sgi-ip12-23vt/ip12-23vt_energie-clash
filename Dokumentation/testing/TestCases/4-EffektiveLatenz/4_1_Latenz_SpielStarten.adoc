@@ -1,7 +1,7 @@
 == TC 4.1: Latenz Spiel starten
 
 === Beschreibung
-Bei diesem Test soll geprüft werden, ob die Latenz beim Starten des Spiels XXX Sekunden beträgt.
+Bei diesem Test soll geprüft werden, ob die Latenz beim Starten des Spiels 1 Sekundes beträgt.
 
 === Annahmen und Voraussetzungen:
 Damit der Spieler die Latenz des Startbildschirms testen kann, muss das Spiel eingeschaltet sein und der Startbildschirm ersichtlich sein.
@@ -15,4 +15,4 @@ Damit der Spieler die Latenz des Startbildschirms testen kann, muss das Spiel ei
 
 *Erwartetes Ergebnis:*
 
-. Der Startbildschirm wird nach XXX Sekunden angezeigt.
+. Der Startbildschirm wird nach 1 Sekunde angezeigt.

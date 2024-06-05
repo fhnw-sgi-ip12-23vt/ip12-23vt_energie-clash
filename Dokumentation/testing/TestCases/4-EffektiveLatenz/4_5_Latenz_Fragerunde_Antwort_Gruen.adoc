@@ -1,7 +1,7 @@
 == TC 4.5: Latenz Fragerunde Antwort Grün
 
 === Beschreibung
-Bei diesem Test soll geprüft werden, ob die Latenz beim Antworten XXX Sekunden beträgt.
+Bei diesem Test soll geprüft werden, ob die Latenz beim Antworten 1 Sekunde beträgt.
 
 === Annahmen und Voraussetzungen:
 Damit der Spieler die Antwort zur Frage auswählen kann, muss das Spiel eingeschaltet sein, das Spiel gestartet sein, der Spielmodus ausgewählt sein und die Schwierigkeit ausgewählt sein.
@@ -15,4 +15,4 @@ Damit der Spieler die Antwort zur Frage auswählen kann, muss das Spiel eingesch
 
 *Erwartetes Ergebnis:*
 
-. Die Antwort zur Frage wird nach XXX Sekunden gewählt.
+. Die Antwort zur Frage wird nach 1 Sekunde gewählt.
