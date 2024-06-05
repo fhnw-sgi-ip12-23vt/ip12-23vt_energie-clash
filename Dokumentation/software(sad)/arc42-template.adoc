@@ -5,7 +5,7 @@
 
 
 // configure DE settings for asciidoc
-include::
+include::src/config.adoc[]
 
 = image:arc42-logo.png[arc42] Template
 :revnumber: 8.1 DE
