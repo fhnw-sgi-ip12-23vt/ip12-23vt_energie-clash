@@ -58,7 +58,7 @@ link:https://docs.gitlab.com/ee/ci/[Weitere Informationen und Dokumentation zu G
 
 .*Gitlab Pages*
 Die konfigurierte Gitlab Pipeline generiert auch eine Gitlab Pages HTML-Seite mit Reports zu den Abhängigkeiten, Checkstyle, JavaDoc und weiterem. +
-link:https://energie-clash-ip12-23vt-ip12-23vt-graueenergie-63da4f42f119428c.pages.fhnw.ch/project-info.html[Generierte Gitlab Pages HTML-Seite]
+
 ****
 
 == Einrichten der Hardware
