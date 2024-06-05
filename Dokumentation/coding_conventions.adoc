@@ -16,7 +16,7 @@ Folgende Konventionen werden im Projekt EnergieClassh eingehalten:
 
 Im Projekt EnergieClash wird eine link:https://checkstyle.sourceforge.io/[Checkstyle] Konfiguration verwendet.
 Weitere Details zu den Coding Conventions finden Sie in der
-link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/energie-clash/-/blob/main/src/main/resources/checkstyle/energieclash-java-formatter.xml?ref_type=heads[energieclash-java-formatter] Konfigurationsdatei.
+link:https://github.com/fhnw-sgi-ip12-23vt/ip12-23vt_energie-clash/blob/main/Code/src/main/resources/checkstyle/energieclash-java-formatter.xml[energieclash-java-formatter] Konfigurationsdatei.
 
 == Sicherstellung der Einhaltung der Konventionen
 
