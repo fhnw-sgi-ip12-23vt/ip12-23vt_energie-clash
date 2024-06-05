@@ -28,7 +28,7 @@
 :imagesdir: ./images
 
 
-= image:images\arc42-logo.png[arc42] Template
+= image:arc42-logo.png[arc42] Template
 :revnumber: 8.1 DE
 :revdate: Mai 2022
 :revremark: (basiert auf AsciiDoc Version)
