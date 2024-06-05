@@ -1,0 +1,197 @@
+= EnergieClash
+
+image: Code/src/main/resources/images/logo.png["EnergieClash Logo]
+
+== Readme
+
+Dieses Readme dient zur Anleitung für den Umgang mit dem Projekt EnergieClash und deren Komponenten. Hier werden auf alle wichtigen Elemente der Software-Architektur und alle Informationen zu der verwendeten Hardware verwiesen.
+
+== Überblick über das Projekt EnergieClash
+
+****
+Alle wichtigen Elemente der Software-Architektur, sowie alle Informationen zu verwendeter Hardware finden Sie in der Dokumentation. Diese ist folgendermassen aufgeteilt:
+
+ * Softwaredokumentation (SAD)
+ * Hardware-Dokumentation
+ * Testdokumentation
+ * Programmierkonventionen
+
+https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu[Zur Dokumentation]
+
+****
+== Arbeit mit der Codebase
+
+Guidelines und Anleitung zur Arbeit mit der Codebase.
+
+=== Coding Conventions
+****
+Zu den Coding Conventions geht es https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/blob/main/coding_conventions.adoc?ref_type=heads[hier].
+****
+=== Set-up
+Damit Sie mit der Codebase von EnergieClash arbeiten können, gibt es Folgendes zu beachten:
+
+==== Codebase
+****
+.*maven*
+Das Projekt wird mit Maven build automation verwaltet, dafür finden Sie im root-Verzeichnis das Project-Object-Model file (das "POM.xml") mit allen notwendigen Konfigurationen.
+Informationen zu verwendeten Versionen können ebenfalls diesem POM entnommen werden.
+
+Im POM sind auch die Runtime Konfigurationen enthalten, zur Erstinstalltion, um das Projekt auf das Raspberry Pi zu deployen und weitere Konfigurationen zum Testen und Debuggen auf dem Raspberry Pi.
+
+.*Einrichten des Projekts*
+Damit diese Runtime Konfigurationen und alle Dependencies in der richtigen Version vorhanden sind, muss die "POM.xml"-Datei als Maven Projekt hinzugefügt werden. +
+https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/energie-clash/-/blob/main/pom.xml?ref_type=heads[Link zum "POM.xml"-File]
+
+Als Zweites muss die Run-Konfiguration "Install Pi4j-library" ausgeführt werden. Diese wird benoetigt, weil im Projekt eine library verwendet wird, welche nich
+t im Maven Central Repository zum Download vorhanden ist. Die Library ist Teil des Projekts und wird mit der Run-Konfiguration lokal installiert. +
+
+Statt der Run Konfiguration kann auch folgender maven Befehl in der Kommandozeile ausgeführt werden:
+[source,shell]
+----
+mvn install:install-file -Dfile=./lib/pi4jlib-1.0.jar -DgroupId=com.pi4j -DartifactId=pi4jlib -Dversion=1.0.0 -Dpackaging=jar
+----
+
+
+.*Gitlab CI/CD-Pipeline*
+Im Projekt finden Sie die link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/energie-clash/-/blob/main/.gitlab-ci.yml?ref_type=heads[gitlab-ci.yml]-Datei welche die Gitlab Continuous Integration Pipeline konfiguriert. Builds werden bei jedem Push auf das Repository erstellt. Dann werden alle Tests durchgeführt und ein Checkstyle Report generiert. Falls das Projekt nicht korrekt erstellt werden kann, zum Beispiel wenn Tests fehlschlagen, wird der build als "failed"-markiert und der Auslöser wird informiert. +
+link:https://docs.gitlab.com/ee/ci/[Weitere Informationen und Dokumentation zu Gitlab CI/CD Pipelines]
+
+.*Gitlab Pages*
+Die konfigurierte Gitlab Pipeline generiert auch eine Gitlab Pages HTML-Seite mit Reports zu den Abhängigkeiten, Checkstyle, JavaDoc und weiterem. +
+link:https://energie-clash-ip12-23vt-ip12-23vt-graueenergie-63da4f42f119428c.pages.fhnw.ch/project-info.html[Generierte Gitlab Pages HTML-Seite]
+****
+
+== Einrichten der Hardware
+=== Setup Raspberry Pi 4
+****
+.*Raspberry Pi OS Installation*
+Zur Neuinstallation eines Raspberry Pis muss zuerst das richtige OS installiert werden. Folgen Sie dazu dem link:https://pi4j.com/getting-started/set-up-a-new-raspberry-pi/[Pi4J Setup Guide].
+
+.*Remote-Verbindung zum Raspberry Pi*
+Nach der OS Installation muss eine Maus, Tastatur und ein Monitor am RasPi angeschlossen werden. Für die Verbindung mit Ihrem Computer befolgen Sie folgende Schritte:
+
+* RasPi mit Strom versorgen. Der RasPi startet automatisch und bootet in das OS.
+* RaspberryPi mit einem Netzwerk verbinden. (Netzwerkassistent des OS nutzen)
+* Nach dem erfolgreichen Verbinden mit einem Netzwerk wird die IP-Adresse im Desktop-Hintergrundbild angezeigt.
+* Nun kann mit der Run Konfiguration "Run on PI(X11)" welche von Maven importiert wird, wenn das POM als Maven Projekt geladen wird, ausgeführt werden.
+- falls die Verbindung fehlschlägt, überprüfen Sie, ob sich der PC im gleichen LAN wie der Raspberry Pi befindet.
+
+Zur Problemlösung und weiteren Informationen verweisen wir auf:
+
+* link:https://pi4j.com/[Pi4J Projekt - Homepage]
+* link:https://www.raspberrypi.com/documentation/[Raspberry Pi - Dokumentation]
+
+.*Run on Pi (X11)*
+Mit dem Ausführen der "Run on Pi(X11)"-Run Konfiguration werden alle für die Applikation benötigten Artifakte auf das RasPi in den "/home/pi/deploy"-Ordner kopiert. Zudem werden Skripts für die Installation des Autostarts der Applikation in diesen Ordner kopiert. All diese Artifakte sind in der "POM.xml"-Datei deklariert.
+
+.*Einrichten des Raspberry Pi*
+Für das Einrichten des Raspberry Pi's werden mehrere Skripts benötigt. Diese werden bei jedem deployment auf den Raspberry Pi kopiert. Diese Skripts sind unter anderem dazu da, die Monitor Einstellungen zu uebernehmen und den Autostart des Spiels einzurichten.
+
+Dazu existiert eine Run-Konfiguration "Installscript on Pi" welche die Scripts auf dem Raspberry Pi ausfuehren und alles einrichten.
+
+Alternativ kann man die Skripts auch direkt auf dem Raspberry Pi ausfuehren:
+
+__1. Das Installationsskript "energieclash_installscript.sh" ausführbar machen:__
+[source,shell]
+----
+sudo chmod +x /home/pi/deploy/energieclash_installscript.sh
+----
+
+__2. Das Installationsskript ausführen__
+[source,shell]
+----
+sudo /home/pi/deploy/energieclash_installscript.sh
+----
+_Funktion des Installskripts:_ +
+Das Installskript verschiebt die Datei energieclash.service in den "/lib/systemd/system/" und startet den energieclash.service als systemd.service zudem macht er das Skript "energieclash_script.sh" ausführbar. +
+
+Dieser Systemd-Service führt bei jedem Systemstart das Skript "energieclash_script.sh" aus, welches das Skript "energieclash_autostart.sh" ausführbar macht und dieses startet. +
+
+Das Skript "energieclash_autostart.sh" führt die Java-Applikation mit den notwendigen Argumenten aus.
+
+-> Dieses Installationsskript muss nach einer Neuinstallation ausgeführt werden. Der Autostart funktioniert nach jedem deployen mit "Run on Pi(X11)" mit der neusten Version der Java Applikation. Das Installationsskript muss also nur bei der Erstinstallation des RasPis ausgeführt werden.
+
+//TODO genaue Beschreibung der Funktionsweise der Monitor Skripts und Debug Skripts
+//TODO Skripts FYI Windows User -> Einstellung IDE wegen Shellscripts auf Windows.
+
+Die Skripts finden Sie hier: link:Code/src/main/resources/scripts/[energieclash/src/main/resources/scripts]
+
+****
+
+== Guide zur Spielkonfiguration
+
+=== Konfiguration-Datei
+Die Konfiguration-Datei wird benutzt, um grundlegende Konfigurationen des Spiels zu definieren.
+****
+.*Anpassen der Spieleinstellungen*
+Die Konfigurationsdatei "app.properties" kann auf dem Raspberry Pi unter "/home/pi/deploy/app.properties" angepasst werden. Oder im Projekt unter "/src/main/resources/app.properties".
+
+In dieser Datei können die zur Auswahl stehenden Spielmodi festgelegt werden. Ausserdem kann die Sprache und die Spiellaenge eingestellt werden. Details zu der Konfiguration sind in der link:Code/src/main/resources/app.properties[app.properties]- Datei beschrieben.
+
+
+****
+===  AdminPage
+Die AdminPage bietet die Möglichkeit direkt am Raspberry Pi auf die "energieclash.sqlite"Datenbank zuzugreifen, um die Fragen und Antworten des Spiels zu verwalten.
+Dazu muss eine Maus und eine Tastatur am Raspberry Pi angeschlossen werden.
+****
+.*Öffnen der AdminPage*
+Um auf die AdminPage zu gelangen, muss man beim Start des Spiels mit der Maus auf das grosse Logo in der Mitte klicken.
+
+Dann öffnet sich auf dem Screen des Sparers die Ansicht der AdminPage.
+
+._Add - Schaltfläche_
+Um neue Fragen, Antworten und Erklärungen hinzuzufügen.
+
+._Edit - Schaltfläche_
+Um Datensätze zu bearbeiten, oder zu löschen.
+
+._Exit - Schaltfläche_
+Mit der Exit Schaltfläche kommen Sie zurück auf das Admin Dashboard und vom Admin Dashboard zurück zum Startscreen.
+****
+[#_informationen_zur_hardware]
+== Informationen zur Hardware
+Welche Komponenten verwendet und wie diese verbunden werden erfahren Sie hier.
+
+=== Verwendete Hardware
+****
+.*Datenblätter*
+Die Datenblätter sind link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/tree/main/hardware/Datasheets?ref_type=heads[hier] verfügbar.
+
+.*Schaltplan*
+link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/blob/main/hardware/Schaltplan/Schaltplan.drawio.svg?ref_type=heads[Schaltplan Energieclash]
+
+.*3D-Models*
+link:https://gitlab.fhnw.ch/ip12-23vt/ip12-23vt_graueenergie/docu/-/tree/main/hardware/3D-Print-Models?ref_type=heads[3D-Print-Models]
+****
+
+== Troubleshooting
+=== Software
+****
+.*Shellskript funktioniert nicht Ordnungsgemäss?*
+Eine häufige Fehlerquelle im Zusammenhang mit Shellskripten ist, dass die Linebreaks im Shellskript falsch formatiert sind. Dies kann auftreten, wenn die Shellskripts in einer IDE über einen Windowscomputer deployed wurden.
+
+-> Stellen Sie sicher, dass die Linebreaks in der IDE auf 'LF', also für Unix und MacOS eingestellt sind. (LF Linebreaks: "\n")
+****
+=== Hardware
+****
+.*Eine LED funktioniert nicht*
+Es sind zwei Run-Konfigurationen erstellt, welche das Debuggen der I2C-Output-Module und das Debuggen der einzelnen LEDs ermöglichen.
+
+Run-Konfigurationen:
+
+* Debug I2C on Pi - Führt das xref:Code/src/main/resources/scripts/i2cTest.sh[I2cTest]-Skript auf dem RasPi aus, welches 10000-mal auf alle Output Adressen schreibt und die Fehler in der Konsole ausgibt.
+
+* Debug LED on Pi - Führt das xref:Code/src/main/resources/scripts/ledTest.sh[ledTest]-Skript auf dem RasPi aus. Welches nacheinander jede LED ansteuert.
+
+.*Wechseln von Hardware Komponenten:*
+
+* Buttons -> Die einzelnen Tasten sind mit Heissleim am Holzgehäuse befestigt. Das Gehäuse öffnen und von innen mit einem Föhn den Leim erhitzen. Dann kann der Button einfach herausgezogen werden.
+
+* LEDs -> Die Kuppeln über den LEDs sind mit Heissleim befestigt. Mit einem Föhn die Unterseite der Kuppeln erhitzen und die Kuppeln dann abziehen.
+
+Informationen zu den verwendeten Teilen finden Sie xref:_informationen_zur_hardware[hier]
+
+****
+== Datenbank
+
+//TODO DB Skript + DB Skript oben in Erstinstallation noch erwaehnen.
