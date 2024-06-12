@@ -19,8 +19,13 @@ import ch.graueenergie.energieclash.view.util.i2c.I2CLEDColor;
 import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,6 +39,9 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
 
     private int addedSaverScore;
     private int addedWasterScore;
+
+    private int turnedOnSaverLeds;
+    private int turnedOnWasterLeds;
 
     public MultiPlayerTurnBasedEnergieClash(
         Language language,
@@ -99,7 +107,7 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
         }
     }
 
-    private void handleEnergieClashRoundTimeViewTimeElapsedAction(Object source) {
+    private void handleEnergieClashRoundTimeViewTimeElapsedAction() {
         displayNewTotalScore();
         setExplanationView();
     }
@@ -132,19 +140,18 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
         List<I2CLED> allLeds = getI2cLeds().stream() //Get LEDs for total gamescore
             .filter(i2CLED -> i2CLED.getPlacement().equals(I2CLEDPlacement.TOTAL_SCORE)).toList();
 
-        int turnedOnSaverLeds = (int) allLeds.stream()
+        turnedOnSaverLeds = (int) allLeds.stream()
             .filter(i2CLED -> i2CLED.getColor().equals(I2CLEDColor.SAVER))
             .filter(I2CLED::isOn)
             .count();
-        Integer nrOfSaverLedsToTurnOn = calculateLedsToTurnOn(turnedOnSaverLeds, addedSaverScore, addedWasterScore);
+        int nrOfSaverLedsToTurnOn = calculateLedsToTurnOn(turnedOnSaverLeds, addedSaverScore, addedWasterScore);
 
-        System.out.println(nrOfSaverLedsToTurnOn);
-        int turnedOnWasterLeds = (int) allLeds.stream()
+        turnedOnWasterLeds = (int) allLeds.stream()
             .filter(i2CLED -> i2CLED.getColor().equals(I2CLEDColor.WASTER))
             .filter(I2CLED::isOn)
             .count();
         int nrOfWasterLedsToTurnOn = calculateLedsToTurnOn(turnedOnWasterLeds, addedWasterScore, addedSaverScore);
-        displayTotalScore(nrOfSaverLedsToTurnOn, nrOfWasterLedsToTurnOn);
+        displayTotalScore(nrOfSaverLedsToTurnOn, nrOfWasterLedsToTurnOn, true);
     }
 
     private int calculateLedsToTurnOn(int turnedOnLeds, int ownAddedScore, int opponentAddedScore) {
@@ -152,25 +159,57 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
     }
 
     private void displayDefaultTotalScore() {
-        displayTotalScore(5, 5);
+        displayTotalScore(5, 5, false);
     }
 
-    private void displayTotalScore(int nrOfSaverLeds, int nrOfWasterLeds) {
+    private void displayTotalScore(int nrOfSaverLeds, int nrOfWasterLeds, boolean blink) {
         List<I2CLED> allLeds = getI2cLeds().stream() //Get LEDs for total gamescore
             .filter(i2CLED -> i2CLED.getPlacement().equals(I2CLEDPlacement.TOTAL_SCORE)).toList();
         allLeds.forEach(I2CLED::turnOff);
-        allLeds.stream()
+        List<I2CLED> saverLeds = allLeds.stream()
             .filter(i2CLED -> i2CLED.getColor().equals(I2CLEDColor.SAVER))
             .limit(nrOfSaverLeds)
-            .forEach(I2CLED::turnOn);
+            .toList();
+
         List<I2CLED> wasterLeds = allLeds.stream()
             .filter(i2CLED -> i2CLED.getColor().equals(I2CLEDColor.WASTER))
             .collect(Collectors.toList());
         Collections.reverse(wasterLeds);
-        wasterLeds.stream()
+        wasterLeds = wasterLeds.stream()
             .limit(nrOfWasterLeds)
-            .forEach(I2CLED::turnOn);
+            .toList();
+
+        if (blink) {
+            List<I2CLED> ledsToMakeBlink = new ArrayList<>();
+            if (nrOfSaverLeds > turnedOnSaverLeds) {
+                ledsToMakeBlink = saverLeds;
+            } else if (nrOfWasterLeds > turnedOnWasterLeds) {
+                ledsToMakeBlink = wasterLeds;
+            }
+            makeChangedLedsBlink(ledsToMakeBlink);
+        }
+        saverLeds.forEach(I2CLED::turnOn);
+        wasterLeds.forEach(I2CLED::turnOn);
+
         I2CLEDController.handleLeds(getI2cLeds());
+    }
+
+    private void makeChangedLedsBlink(List<I2CLED> leds) {
+        new Thread(() -> {
+            final int[] i = {0};
+            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+            scheduler.scheduleAtFixedRate(() -> {
+                if (i[0] < 5) {
+                    leds.forEach(I2CLED::toggle);
+                    I2CLEDController.handleLeds(getI2cLeds());
+                    i[0]++;
+                } else {
+                    leds.forEach(I2CLED::turnOn);
+                    I2CLEDController.handleLeds(getI2cLeds());
+                    scheduler.shutdown();
+                }
+            }, 0, 200, TimeUnit.MILLISECONDS);
+        }).start();
     }
 
     private void handleExplanationViewAction() {
@@ -186,6 +225,7 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
     private void handleEndViewAction() {
         if (areBothPlayersReady()) {
             getI2cLeds().forEach(I2CLED::turnOff);
+            I2CLEDController.handleLeds(getI2cLeds());
             getSupport().firePropertyChange(PropertyName.GAME_RESTART.getPropertyChangeEvent(this));
         }
     }
@@ -222,10 +262,15 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
     private void setEndView() {
         String viewPath = "/energieClashViews/EnergieClashEndView.fxml";
         EnergieClashRole winner = null;
+        I2CLEDColor color;
         if (saver.getPoints() > waster.getPoints()) {
             winner = saver.getRole();
+            color = I2CLEDColor.SAVER;
         } else if (waster.getPoints() > saver.getPoints()) {
             winner = waster.getRole();
+            color = I2CLEDColor.WASTER;
+        } else {
+            color = null;
         }
         removePropertyChangeListenerFromViews(this);
         saverView = new EnergieClashEndView(saver, language, winner);
@@ -233,6 +278,37 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
         addPropertyChangeListenerToViews(this);
         SceneCreator.setViewToStage(saverStage, saverView, viewPath, true);
         SceneCreator.setViewToStage(wasterStage, wasterView, viewPath, true);
+        // Make LEDs blink
+        enablePartyMode(color);
+    }
+
+    private void enablePartyMode(I2CLEDColor color) {
+        new Thread(() -> {
+            List<I2CLED> i2CLEDS = getI2cLeds();
+            i2CLEDS.stream()
+                .filter(i2CLED -> i2CLED.getPlacement().equals(I2CLEDPlacement.TOTAL_SCORE))
+                .filter(i2CLED -> !i2CLED.getColor().equals(color))
+                .forEach(I2CLED::turnOff);
+            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+            scheduler.scheduleAtFixedRate(() -> {
+                if (!areBothPlayersReady()) {
+                    Random rnd = new Random();
+                    i2CLEDS.stream()
+                        .filter(i2CLED -> i2CLED.getColor().equals(color))
+                        .collect(Collectors.collectingAndThen(Collectors.toList(),
+                            collected -> {
+                                Collections.shuffle(collected, rnd);
+                                return collected;
+                            }))
+                        .stream()
+                        .limit(rnd.nextInt(i2CLEDS.size()))
+                        .forEach(I2CLED::toggle);
+                    I2CLEDController.handleLeds(getI2cLeds());
+                } else {
+                    scheduler.shutdown();
+                }
+            }, 0, 100, TimeUnit.MILLISECONDS);
+        }).start();
     }
 
     private boolean doesWinnerExist() {
@@ -250,7 +326,7 @@ public class MultiPlayerTurnBasedEnergieClash extends TurnBasedEnergieClash {
         switch (PropertyName.valueOf(evt.getPropertyName())) {
         case START -> handleStartViewAction();
         case ENERGIE_CLASH_ROUND_ANSWER -> handleEnergieClashRoundAnswerAction(evt.getSource());
-        case ENERGIE_CLASH_ROUND_TIMER_ELAPSED -> handleEnergieClashRoundTimeViewTimeElapsedAction(evt.getSource());
+        case ENERGIE_CLASH_ROUND_TIMER_ELAPSED -> handleEnergieClashRoundTimeViewTimeElapsedAction();
         case EXPLANATION -> handleExplanationViewAction();
         case END -> handleEndViewAction();
         default -> { /*nothing */ }

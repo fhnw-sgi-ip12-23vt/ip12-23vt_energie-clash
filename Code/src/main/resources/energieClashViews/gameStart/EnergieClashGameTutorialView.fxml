@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <ImageView fx:id="logoImage" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-    <HBox fx:id="buttonHBox" spacing="20" alignment="CENTER" layoutX="100.0" layoutY="1000.0" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="1720.0" />
+    <HBox fx:id="buttonHBox" alignment="CENTER" layoutX="100.0" layoutY="1000.0" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="1720.0" spacing="20" />
     <StackPane fx:id="stackPane" prefHeight="1080.0" prefWidth="1920.0">
         <Pane fx:id="startPane" prefHeight="1080.0" prefWidth="1920.0">
             <VBox fx:id="startPaneVBox" layoutX="348.0" layoutY="140.0" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1224.0" spacing="50.0" styleClass="background-item" />
@@ -22,12 +22,7 @@
             <VBox fx:id="tutorialPaneVBox" layoutX="348.0" layoutY="140.0" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1224.0" styleClass="background-item" />
         </Pane>
         <Pane fx:id="greyEnergyPane" prefHeight="1080.0" prefWidth="1920.0" visible="false">
-            <VBox fx:id="greyEnergyPaneVBox" alignment="CENTER" layoutX="348.0" layoutY="140.0" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1224.0" styleClass="background-item" />
-        </Pane>
-        <Pane fx:id="greyEnergyDetailPane" prefHeight="1080.0" prefWidth="1920.0" visible="false">
-            <VBox alignment="TOP_CENTER" layoutX="348.0" layoutY="140.0" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1224.0" spacing="50" styleClass="background-item">
-                <HBox fx:id="greyEnergyDetailPaneTextHBox" prefWidth="1024.0" />
-            </VBox>
+            <HBox fx:id="greyEnergyPaneHBox" alignment="CENTER" layoutX="248.0" layoutY="140.0" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1424.0" spacing="20.0" styleClass="background-item" />
         </Pane>
         <StackPane fx:id="waitingPane" layoutX="610.0" layoutY="390.0" maxHeight="-Infinity" maxWidth="700.0" prefHeight="300.0" prefWidth="700.0" styleClass="background-item" visible="false">
             <Label fx:id="waitingForPlayerLbl" />

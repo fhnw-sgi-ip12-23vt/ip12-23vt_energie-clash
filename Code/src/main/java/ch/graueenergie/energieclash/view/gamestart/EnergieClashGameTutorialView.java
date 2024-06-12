@@ -35,8 +35,6 @@ public class EnergieClashGameTutorialView extends AbstractSynchEnergieClashView 
     @FXML
     private Pane greyEnergyPane;
     @FXML
-    private Pane greyEnergyDetailPane;
-    @FXML
     private StackPane waitingPane;
     @FXML
     private VBox startPaneVBox;
@@ -45,9 +43,7 @@ public class EnergieClashGameTutorialView extends AbstractSynchEnergieClashView 
     @FXML
     private VBox tutorialPaneVBox;
     @FXML
-    private VBox greyEnergyPaneVBox;
-    @FXML
-    private HBox greyEnergyDetailPaneTextHBox;
+    private HBox greyEnergyPaneHBox;
     @FXML
     private Label waitingForPlayerLbl;
     @FXML
@@ -142,36 +138,19 @@ public class EnergieClashGameTutorialView extends AbstractSynchEnergieClashView 
         makeAllOtherPanesInvisible(greyEnergyPane);
         greyEnergyPane.setVisible(true);
         //setup buttonaction
-        buttons.stream().filter(button -> button.getButtonColor().equals(ButtonColor.RED)).findFirst()
-            .ifPresent(button -> button.onDown(() -> Platform.runLater(this::greyEnergyDetailButtonAction)));
-        //display button
-        greyEnergyPaneVBox.getChildren().clear();
-        ImageView imageView = new ImageView();
-        imageView.setImage(new Image(Translation.TUTORIAL_GREY_ENERGY_IMAGE.getTextForLanguage(language)));
-        ButtonColor buttonColor = ButtonColor.RED;
-        greyEnergyPaneVBox.getChildren().add(imageView);
-        setButtons(createButtonHBox(
-            buttons.stream().filter(button -> button.getButtonColor().equals(buttonColor)).findFirst().orElseThrow(
-                () -> new NoSuchElementException(String.format("No such button with color %s", buttonColor))),
-            Translation.BUTTON_CONTINUE.getTextForLanguage(language)));
-    }
-
-    private void greyEnergyDetailButtonAction() {
-        resetButtons();
-        makeAllOtherPanesInvisible(greyEnergyDetailPane);
-        greyEnergyDetailPane.setVisible(true);
-        //Setup buttonactions
         buttons.stream().filter(button -> ButtonColor.GREEN.equals(button.getButtonColor())).findFirst()
             .ifPresent(button -> button.onDown(() -> Platform.runLater(this::tutorialButtonAction)));
         buttons.stream().filter(button -> ButtonColor.RED.equals(button.getButtonColor())).findFirst()
             .ifPresent(button -> button.onDown(() -> Platform.runLater(this::skipButtonAction)));
-        //Display text
+
+        greyEnergyPaneHBox.getChildren().clear();
         Label textLbl = new Label();
         textLbl.setWrapText(true);
         textLbl.setText(Translation.TUTORIAL_GREY_ENERGY.getTextForLanguage(language));
-        greyEnergyDetailPaneTextHBox.getChildren().clear();
-        greyEnergyDetailPaneTextHBox.getChildren().add(textLbl);
-        //Display buttons
+        ImageView imageView = new ImageView();
+        imageView.setImage(new Image(Translation.TUTORIAL_GREY_ENERGY_IMAGE.getTextForLanguage(language)));
+        imageView.setPreserveRatio(true);
+        greyEnergyPaneHBox.getChildren().addAll(textLbl, imageView);
         ButtonColor tutorialButtonColor = ButtonColor.GREEN;
         HBox tutorialButton = createButtonHBox(
             buttons.stream().filter(button -> button.getButtonColor().equals(tutorialButtonColor)).findFirst()
@@ -230,7 +209,7 @@ public class EnergieClashGameTutorialView extends AbstractSynchEnergieClashView 
     }
 
     private void makeAllOtherPanesInvisible(Pane pane) {
-        Stream.of(startPane, rolePane, tutorialPane, greyEnergyPane, greyEnergyDetailPane, waitingPane)
+        Stream.of(startPane, rolePane, tutorialPane, greyEnergyPane, waitingPane)
             .filter(p -> !p.equals(pane))
             .forEach(p -> p.setVisible(false));
     }
