@@ -38,8 +38,8 @@ public enum Translation {
     TUTORIAL_ROLE_TITLE(createTranslationTextMap("Du hast die Rolle %s", "You have the role %s", "Tu as le role du")),
     TUTORIAL_ROLE_SAVER_TEXT(createTranslationTextMap(
         """
-            Deine Aufgabe ist es so wenig Graue Energie zu brauchen wie möglich.
-            Dies kannst du tun in dem du sie Antwort gibst welche am wenigsten Graue Energie verbraucht.""",
+            Deine Aufgabe ist es so wenig Graue Energie zu verbrauchen wie möglich.
+            Dies kannst du tun in dem du die Antwort gibst welche am wenigsten Graue Energie verbraucht.""",
         """
             Your task is to use as little grey energy as possible.
             You can do this by giving answers which use the least grey energy.""",
@@ -48,13 +48,13 @@ public enum Translation {
             Tu peux le faire en donnant des réponses qui utilisent le moins d’énergie grise.""")),
     TUTORIAL_ROLE_WASTER_TEXT(createTranslationTextMap(
         """
-            Deine Aufgabe ist es so wenig Graue Energie zu brauchen wie möglich.
-            Dies kannst du tun in dem du sie Antwort gibst welche am meisten Graue Energie verbraucht.""",
+            Deine Aufgabe ist es so viel Graue Energie zu verbrauchen wie möglich.
+            Dies kannst du tun in dem du die Antwort gibst welche am meisten Graue Energie verbraucht.""",
         """
-            Your task is to use as little grey energy as possible.
+            Your task is to use as much grey energy as possible.
             You can do this by giving answers which use the most grey energy.""",
         """
-            Ta tâche est d’utiliser le moins d’énergie grise possible.
+            Ta tâche est d’utiliser le plus d’énergie grise possible.
             Tu peux le faire en donnant des réponses qui utilisent le plus d’énergie grise.""")),
     TUTORIAL_BUTTON_GREY_ENERGY(
         createTranslationTextMap("Was ist graue Energie", "What is grey energy", "C'est quoi l'énergie grise")),
@@ -71,9 +71,9 @@ public enum Translation {
             bis hin zur Entsorgung.""",
         """
             Grey energy is all the energy used,
-            for production of a product or
-            or a service
-            until disposal.""",
+            for production of a product
+            or service
+            until its disposal.""",
         """
             L'énergie grise décrit toute l'énergie
             pour fabriquer un produit
