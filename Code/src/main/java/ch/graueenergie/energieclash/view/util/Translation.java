@@ -35,7 +35,7 @@ public enum Translation {
             Le jeu se joue au niveau de difficulté "%s".
 
             Le premier tour va bientôt commencer.""")),
-    TUTORIAL_ROLE_TITLE(createTranslationTextMap("Du hast die Rolle %s", "You have the role %s", "Tu as le role du")),
+    TUTORIAL_ROLE_TITLE(createTranslationTextMap("Du hast die Rolle %s!", "You have the role %s!", "Tu as le role du!")),
     TUTORIAL_ROLE_SAVER_TEXT(createTranslationTextMap(
         """
             Deine Aufgabe ist es so wenig Graue Energie zu verbrauchen wie möglich.
