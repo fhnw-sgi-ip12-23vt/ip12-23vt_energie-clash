@@ -83,8 +83,7 @@ public enum Translation {
         """
             Es gibt zwei Rollen, den Energie-Sparer und den Energie-Verschwender.
             Beide Rollen bekommen die gleiche Frage, müssen diese aber rollenspezifisch beantworten.
-            Nach dem Beantworten der Frage wird die Antwort bewertet von 1-5 und die Differenz der Antwort beider Rollen
-            wird in die Mitte des Spielfelds übertragen.""",
+            Nach dem Beantworten der Frage wird die Antwort bewertet von 1-5 und die Differenz der Antwort beider Rollen wird in die Mitte des Spielfelds übertragen.""",
         """
             There are two roles, the energy saver and the Energy wasters.
             Both roles get the same question, but have to answer it in a role-specific manner.
